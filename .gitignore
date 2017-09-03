@@ -99,3 +99,10 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+
+db.sqlite3
+/static
+.DS_Store
+api/migrations/*
+api/migrations/
