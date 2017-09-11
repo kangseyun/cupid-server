@@ -74,13 +74,14 @@ WSGI_APPLICATION = 'cupid.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
+PROJECT_DIR = BASE_DIR + "/cupid"
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'cupid',
-        'USER': 'root',
-        'PASSWORD': 'apmsetup',
-        'HOST': 'localhost',
+        'OPTIONS': {
+            'read_default_file': os.path.join(PROJECT_DIR, "my.cnf"),
+        },
     }
 }
 

@@ -107,4 +107,4 @@ db.sqlite3
 api/migrations/*
 api/migrations/
 
-/etc/mysql/my.cnf
+cupid/my.cnf
