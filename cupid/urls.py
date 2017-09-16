@@ -16,6 +16,10 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
+from api.views.auth import login, join
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^login/$', login),
+    url(r'^join/$', join)
 ]
