@@ -45,6 +45,10 @@ def join(request):
             try:
                 userInstance = User.objects.create_user(name, email, password)
                 userInstance.save()
+
+                obj = UserDetail(user = userInstance)
+                obj.save()
+
                 response_data['email'] = email
                 response_data['status'] = 1
             except:

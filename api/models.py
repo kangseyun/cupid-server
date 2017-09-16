@@ -1,17 +1,16 @@
 from django.db import models
 from datetime import timedelta, datetime
+from django.contrib.auth.models import User
 # Create your models here.
 
 
 class UserDetail(models.Model):
-    email = models.CharField(max_length = 50) # email
-    password = models.CharField(max_length = 20)  # 사용자 비밀번호
-    name = models.CharField(max_length = 20)    # 사용자 이름
+    user = models.ForeignKey(User)
     user_type = models.IntegerField(blank=False, default=0)             # 사용자 타입 (0:관리자 / 1:광고주 / 2: 크리에이터)
     create_date = models.DateTimeField()         # 가입 시간
     
     def save(self, *args, **kwargs):
-        if self.email:
+        if self.user:
             now_time = datetime.now()
             expire_second = 3600
 
@@ -20,7 +19,7 @@ class UserDetail(models.Model):
         super(UserDetail, self).save(*args, **kwargs)
 
     def __str__(self):
-        return self.name
+        return self.user.email
 
 class Ads(models.Model):
     ad_type = models.CharField(max_length = 100)
