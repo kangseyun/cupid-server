@@ -6,6 +6,8 @@ __pycache__/
 # C extensions
 *.so
 
+cupid/my.cnf
+
 # Distribution / packaging
 .Python
 env/
