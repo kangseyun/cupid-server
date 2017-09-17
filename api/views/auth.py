@@ -4,13 +4,14 @@ from django.core import serializers
 from api.models import UserDetail
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.models import User
-# Create your views here.
+
 
 response_data = {
     'status': 'token_ok', 
     'email': '',
     'token': ''
 }
+
 
 @csrf_exempt
 def login(request):
