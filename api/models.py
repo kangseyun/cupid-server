@@ -6,8 +6,10 @@ from django.contrib.auth.models import User
 
 class UserDetail(models.Model):
     user = models.ForeignKey(User)
-    user_type = models.IntegerField(blank=False, default=0)  # 사용자 타입 (0:관리자 / 1:광고주 / 2: 크리에이터)
-    create_date = models.DateTimeField()  # 가입 시간
+    user_type = models.IntegerField(blank=False, default=0) # 사용자 타입 (0:관리자 / 1:광고주 / 2: 크리에이터)
+    create_date = models.DateTimeField() # 가입 시간
+    last_date = models.DateTimeField(blank=True)
+    token = models.CharField(max_length=100, blank=True)
     
     def save(self, *args, **kwargs):
         if self.user:
