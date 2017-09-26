@@ -52,23 +52,26 @@ def join(request):
         if not email or not name or not password:
             response_data['status'] = 2            
         else:
-            try:
-                userInstance = User.objects.create_user(name, email, password)
-                userInstance.save()
+            
+            userInstance = User.objects.create_user(name, email, password)
+            userInstance.save()
 
-                obj = UserDetail(user = userInstance)
-                obj.save()
+            obj = UserDetail(user = userInstance, user_type=1)
+            print(obj)
+            obj.save()
 
-                response_data['email'] = email
-                response_data['status'] = 1
-            except:
-                response_data['status'] = -1
+
+            response_data['email'] = email
+            response_data['status'] = 1
+            
+             
     
     else:
         response_data['status'] = -1
     return JsonResponse(response_data, safe=False)
 
 
+@csrf_exempt
 def logout(request):
     if request.method == "POST":
         email = request.POST.get('email')
@@ -81,4 +84,21 @@ def logout(request):
             'status': 1
         }
 
+    return JsonResponse(response_data, safe=False)
+
+
+@csrf_exempt
+def findEmail(request):
+    if request.method == "POST":
+        email = request.POST.get('email')
+        name = request.POST.get('name')
+
+
+        userInstance = UserDetail.objects.filter(email = email)
+        if userInstance:
+            print("find")
+        else:
+            print("Not find")
+    
+    
     return JsonResponse(response_data, safe=False)
