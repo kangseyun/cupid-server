@@ -6,8 +6,8 @@ from django.contrib.auth.models import User
 
 class UserDetail(models.Model):
     user = models.ForeignKey(User)
-    user_type = models.IntegerField(blank=False, default=0) # 사용자 타입 (0:관리자 / 1:광고주 / 2: 크리에이터)
-    create_date = models.DateTimeField() # 가입 시간
+    user_type = models.IntegerField(blank=False, default=0)  # 사용자 타입 (0:관리자 / 1:광고주 / 2: 크리에이터)
+    create_date = models.DateTimeField()  # 가입 시간
     
     def save(self, *args, **kwargs):
         if self.user:
@@ -20,6 +20,7 @@ class UserDetail(models.Model):
 
     def __str__(self):
         return self.user.email
+
 
 class Ads(models.Model):
     ad_type = models.CharField(max_length = 100)
@@ -41,6 +42,7 @@ class Ads(models.Model):
     def __str__(self):
         return self.name
 
+
 class AdRequest(models.Model):
     ad_id = models.ForeignKey(Ads)
     sender = models.ForeignKey(UserDetail)
@@ -50,6 +52,7 @@ class AdRequest(models.Model):
     def __str__(self):
         return self.name
 
+
 class Board(models.Model):
     title = models.CharField(max_length=100)
     author = models.ForeignKey(UserDetail)
@@ -58,6 +61,7 @@ class Board(models.Model):
 
     def __str__(self):
         return self.name
+
 
 class Reply(models.Model):
     board_id = models.ForeignKey(Board)
