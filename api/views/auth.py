@@ -27,10 +27,10 @@ def login(request):
         email = request.POST.get('email')
         password = request.POST.get('password')
 
-        loginInstance = authenticate(username='john', password='secret')
+        loginInstance = authenticate(username=email, password=password)
         
-        if loginInstance:
-            response_data['email'] = loginInstance[0].email
+        if loginInstance is not None:
+            response_data['email'] = loginInstance.email
             response_data['status'] = 1
             response_data['token'] = 'token'
         else:
