@@ -46,6 +46,17 @@ def ad(request):
 
 
 @csrf_exempt
+def ad_count(request):
+    if request.method == "GET":
+        count = Ads.objects.count()
+        response_data['code'] = 1
+        response_data['count'] = count
+    else:
+        response_data['code'] = -1
+    return JsonResponse(response_data, safe=False)
+
+
+@csrf_exempt
 def ad_write(request):
     if request.method == "POST":
         token = request.POST.get('token')
@@ -59,7 +70,7 @@ def ad_write(request):
             ad = Ad_type.objects.get(id=ad_type)
             user = UserDetail.objects.get(token=token)
 
-            obj = Ads(ad_type=ad, title="asd", author=user, budget=1, limit=1)
+            obj = Ads(ad_type=ad, title=title, author=user, budget=budget, limit=limit)
             obj.save()
             response_data['code'] = 1
         else:

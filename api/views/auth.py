@@ -8,6 +8,7 @@ from django.contrib.auth import authenticate
 import hashlib
 from datetime import datetime
 import uuid
+from functools import wraps
 
 
 response_data = {
@@ -23,6 +24,15 @@ def create_token(email):
     return m.hexdigest()
 
 
+# def token_check(func):
+#     @wraps(func)
+#     def wrapper(*args, **kwargs):
+#         if kwargs.get('username') != 'admin':
+#             raise Exception("아 진짜 안된다니까 그러네..")
+#         return func(*args, **kwargs)
+#     return wrapper
+
+
 @csrf_exempt
 def login(request):
     if request.method == "POST":
@@ -36,6 +46,7 @@ def login(request):
 
             obj = UserDetail.objects.get(user=loginInstance)
             obj.token = token
+            obj.last_login = datetime.now()
             obj.save()
 
             response_data['code'] = 1
