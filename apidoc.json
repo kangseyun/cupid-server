@@ -1,0 +1,20 @@
+{
+	"name": "FINGER MD API DOC",
+	"version": "0.0.0",
+	"description": "Finger MD Api Documentation",
+	"url": "localhost:3000",
+	"order": [
+		"adproduct",
+		"brand",
+		"category",
+		"group",
+		"index",
+		"info",
+		"inven",
+		"job",
+		"point",
+		"product",
+		"tags",
+		"tc"
+	]
+}
