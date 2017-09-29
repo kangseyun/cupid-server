@@ -6,12 +6,15 @@ from django.contrib.auth.models import User
 
 class UserDetail(models.Model):
     user = models.ForeignKey(User)
-    user_type = models.IntegerField(blank=False, default=0) # 사용자 타입 (0:관리자 / 1:광고주 / 2: 크리에이터)
-    create_date = models.DateTimeField(auto_now_add=True) # 가입 시간
-    token = models.CharField(max_length=100, blank=True)
+    user_type = models.IntegerField(blank=False, default=0, verbose_name='유저 타입') # 사용자 타입 (0:관리자 / 1:광고주 / 2: 크리에이터)
+    create_date = models.DateTimeField(auto_now_add=True, verbose_name='가입 날짜') # 가입 시간
+    token = models.CharField(max_length=100, blank=True, verbose_name='토큰')
     
     def save(self, *args, **kwargs):
         super(UserDetail, self).save(*args, **kwargs)
+
+    def __str__(self):
+        return self.user.email
 
 
 class Ad_type(models.Model): 
@@ -38,7 +41,6 @@ class Ads(models.Model):
         if self.title:
             now_time = datetime.now()
             expire_second = 3600
-
             self.create_at = now_time + timedelta(seconds = expire_second)
             
         super(Ads, self).save(*args, **kwargs)

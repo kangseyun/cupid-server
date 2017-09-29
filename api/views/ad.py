@@ -1,4 +1,5 @@
 import hashlib
+from datetime import timedelta, datetime
 
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
@@ -13,13 +14,7 @@ from api.models import Ads, Ad_type
 from api.validation.AdValidation import AdsValidation
 
 
-response_data = {
-    'status': 'token_ok', 
-    'email': '',
-    'token': '',
-    'code:': 0,
-    'data': '',
-}
+response_data = {}
 
 
 @csrf_exempt
@@ -31,10 +26,14 @@ def ad_detail(request, id=0):
         except Ads.DoesNotExist:
             response_data['code'] = -1
     elif request.method == 'PUT':
-        print("Hello")
+        print("PUT") # 수정
     elif request.method == 'DELETE':
-        print("Hello")
-    
+        try:
+            instance = Ads.objects.get(id=id)
+            instance.delete()
+            response_data['code'] = 1
+        except:
+            response_data['code'] = -1
 
     return JsonResponse(response_data, safe=False)
 
@@ -44,19 +43,26 @@ def ad(request):
     if request.method == "GET":
         data = serializers.serialize("json", Ads.objects.all())
         return JsonResponse(data, safe=False)
-    if request.method == "POST":
-        return JsonResponse(response_data, safe=False)
 
 
 @csrf_exempt
 def ad_write(request):
     if request.method == "POST":
-        form = AdsValidation(request.POST, instance)
-        if not form.is_valid():
-            print("Error")
+        token = request.POST.get('token')
+        ad_type = request.POST.get('adType')
+        title = request.POST.get('title')
+        budget = request.POST.get('budget')
+        limit = request.POST.get('limit')
+
+        # validation
+        if token and ad_type and title and budget and limit:
+            ad = Ad_type.objects.get(id=ad_type)
+            user = UserDetail.objects.get(token=token)
+
+            obj = Ads(ad_type=ad, title="asd", author=user, budget=1, limit=1)
+            obj.save()
+            response_data['code'] = 1
         else:
-            
-            ad_type = Ad_type.objects.get(id=form.data['ad_type'])
-            obj = Ads(form)
-            print("Valied")
+            response_data['code'] = -1
+
     return JsonResponse(response_data, safe=False)
