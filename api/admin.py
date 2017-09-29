@@ -1,9 +1,9 @@
 from django.contrib import admin
-from api.models import UserDetail, Ads, AdRequest, Board, Reply
+from api.models import UserDetail, Ads, AdRequest, Reply, Ad_type
 
 
 admin.site.register(UserDetail)
 admin.site.register(Ads)
 admin.site.register(AdRequest)
-admin.site.register(Board)
 admin.site.register(Reply)
+admin.site.register(Ad_type)

@@ -14,17 +14,28 @@ class UserDetail(models.Model):
         super(UserDetail, self).save(*args, **kwargs)
 
 
+class Ad_type(models.Model): 
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=50, verbose_name='이름')
 
-class Ads(models.Model):
-    ad_type = models.CharField(max_length = 100)
-    title = models.CharField(max_length = 50)
-    author = models.ForeignKey(UserDetail)
+    def save(self, *args, **kwargs):
+        super(Ad_type, self).save(*args, **kwargs)
+    
+    def __str__(self):
+        return self.name
+
+
+class Ads(models.Model):    
+    id = models.AutoField(primary_key=True)
+    ad_type = models.ForeignKey(Ad_type, verbose_name='광고타입')
+    title = models.CharField(max_length=50, verbose_name='제목')
+    author = models.ForeignKey(UserDetail, verbose_name='작성자')
     budget = models.IntegerField(blank=False, default=0)
     limit = models.IntegerField(blank=False, default=0)
     create_at = models.DateTimeField(auto_now=False)
 
     def save(self, *args, **kwargs):
-        if self.ad_type:
+        if self.title:
             now_time = datetime.now()
             expire_second = 3600
 
@@ -33,7 +44,7 @@ class Ads(models.Model):
         super(Ads, self).save(*args, **kwargs)
 
     def __str__(self):
-        return self.name
+        return self.title
 
 
 class AdRequest(models.Model):
@@ -47,9 +58,9 @@ class AdRequest(models.Model):
 
 
 class Board(models.Model):
-    title = models.CharField(max_length=100)
-    author = models.ForeignKey(UserDetail)
-    contents = models.TextField()
+    title = models.CharField(max_length=100, verbose_name='제목')
+    author = models.ForeignKey(UserDetail, verbose_name='작성자')
+    contents = models.TextField(verbose_name='내용')
     create_at = models.DateTimeField()
 
     def __str__(self):
@@ -57,9 +68,9 @@ class Board(models.Model):
 
 
 class Reply(models.Model):
-    board_id = models.ForeignKey(Board)
-    contents = models.CharField(max_length=300)
-    author = models.ForeignKey(UserDetail)
+    board_id = models.ForeignKey(Board, verbose_name='부모 게시물')
+    contents = models.CharField(max_length=300, verbose_name='내용')
+    author = models.ForeignKey(UserDetail, verbose_name='작성자')
     create_at = models.DateTimeField(auto_now=False)
 
     def __str__(self):

@@ -63,9 +63,6 @@ def join(request):
 
             response_data['email'] = email
             response_data['status'] = 1
-            
-             
-    
     else:
         response_data['status'] = -1
     return JsonResponse(response_data, safe=False)
