@@ -17,7 +17,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 
 from api.views.auth import login, join
-from api.views.resume import resume_write
+from api.views.resume import resume_write, resume_detail
 
 urlpatterns = [
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
@@ -26,5 +26,5 @@ urlpatterns = [
     url(r'^join/$', join),
 
     url(r'^resume/write$', resume_write),
-    # url(r'^resume/(?P<resume_id>\d+)$', resume_detail)
+    url(r'^resume/detail/(?P<resume_id>\d+)$', resume_detail)
 ]
