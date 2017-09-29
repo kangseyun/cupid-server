@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 import hashlib
 from datetime import datetime
+import uuid
 
 
 response_data = {
@@ -17,7 +18,8 @@ response_data = {
 
 def create_token(email):
     m = hashlib.sha256()
-    m.update(email+datetime.now())
+    email = email.join(datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+    m.update(email.encode('utf-8'))
     return m.hexdigest()
 
 
@@ -30,14 +32,19 @@ def login(request):
         loginInstance = authenticate(username=email, password=password)
         
         if loginInstance is not None:
-            response_data['email'] = loginInstance.email
-            response_data['status'] = 1
-            response_data['token'] = 'token'
+            token = create_token(loginInstance.email)
+
+            obj = UserDetail.objects.get(user=loginInstance)
+            obj.token = token
+            obj.save()
+
+            response_data['code'] = 1
+            response_data['token'] = token
         else:
-            response_data['status'] = 0
+            response_data['code'] = 0
 
     else:
-        response_data['status'] = -1
+        response_data['code'] = -1
     
     return JsonResponse(response_data, safe=False)
 
@@ -50,36 +57,36 @@ def join(request):
         password = request.POST.get('password')
 
         if not email or not name or not password:
-            response_data['status'] = 2            
+            response_data['code'] = 2            
         else:
             
             userInstance = User.objects.create_user(name, email, password)
             userInstance.save()
 
             obj = UserDetail(user = userInstance, user_type=1)
-            print(obj)
             obj.save()
 
 
             response_data['email'] = email
-            response_data['status'] = 1
+            response_data['code'] = 1
     else:
-        response_data['status'] = -1
+        response_data['code'] = -1
     return JsonResponse(response_data, safe=False)
 
 
 @csrf_exempt
 def logout(request):
     if request.method == "POST":
-        email = request.POST.get('email')
         token = request.POST.get('token')
 
-        userInstance = UserDetail.objects.filter(email = email, token = token)
-        userInstance.token = ""
+        try:
+            userInstance = UserDetail.objects.get(token = token)
+            userInstance.token = -1
+            userInstance.save()
 
-        response_data = {
-            'status': 1
-        }
+            response_data['code'] = 1
+        except:
+            response_data['code'] = -1
 
     return JsonResponse(response_data, safe=False)
 
