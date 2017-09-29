@@ -14,6 +14,13 @@ class UserDetail(models.Model):
         super(UserDetail, self).save(*args, **kwargs)
 
 
+class Resume(models.Model):
+    user = models.ForeignKey(User)
+    create_date = models.DateTimeField(auto_now_add=True)
+
+    def save(self, *args, **kwargs):
+        super(Resume, self).save(*args, **kwargs)
+
 
 class Ads(models.Model):
     ad_type = models.CharField(max_length = 100)
