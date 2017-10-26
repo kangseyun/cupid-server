@@ -28,6 +28,13 @@ class Ad_type(models.Model):
     def __str__(self):
         return self.name
 
+class Resume(models.Model):
+    user = models.ForeignKey(User)
+    create_date = models.DateTimeField(auto_now_add=True)
+
+    def save(self, *args, **kwargs):
+        super(Resume, self).save(*args, **kwargs)
+
 
 class Ads(models.Model):    
     id = models.AutoField(primary_key=True)

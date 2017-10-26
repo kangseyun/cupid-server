@@ -1,6 +1,5 @@
 from django.conf.urls import url, include
 from django.contrib import admin
-
 from api.views.auth import login, join, logout
 from api.views.ad import ad, ad_detail, ad_write, ad_count
 
