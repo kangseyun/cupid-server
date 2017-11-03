@@ -2,11 +2,11 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from api.views.auth import login, join, logout
 from api.views.ad import ad, ad_detail, ad_write, ad_count
-
+from api.views.home import index
 
 urlpatterns = [
-    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^admin/', admin.site.urls),
+    url(r'^$', index),
     url(r'^api/v1/auth/login/$', login),
     url(r'^api/v1/auth/join/$', join),
     url(r'^api/v1/auth/logout/$', logout),
