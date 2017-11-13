@@ -41,8 +41,9 @@ def ad_detail(request, id=0):
 @csrf_exempt
 def ad(request):
     if request.method == "GET":
-        data = serializers.serialize("json", Ads.objects.all())
-        return JsonResponse(data, safe=False)
+        # data = serializers.serialize("json", Ads.objects.all())
+        # return JsonResponse(data, safe=False)
+        return render(request, 'ad_list.html', {})
 
 
 @csrf_exempt
