@@ -57,7 +57,8 @@ def login(request):
     else:
         response_data['code'] = -1
     
-    return JsonResponse(response_data, safe=False)
+    # return JsonResponse(response_data, safe=False)
+    return render(request, 'login.html', {})
 
 
 @csrf_exempt
