@@ -82,7 +82,8 @@ def join(request):
             response_data['code'] = 1
     else:
         response_data['code'] = -1
-    return JsonResponse(response_data, safe=False)
+    # return JsonResponse(response_data, safe=False)
+    return render(request, 'register.html', {})
 
 
 @csrf_exempt
