@@ -4,93 +4,73 @@
 
 {% block content %}
 
-<head>
-  <script type="text/javascript">
-  window.onload = function()
-  {
-    // fix for windows 8
-    if (navigator.appVersion.indexOf("Windows NT 6.2") != -1)
-      document.head.innerHTML += '<link rel="stylesheet" type="text/css" href="{% static 'pages/css/windows.chrome.fix.css' %}" />'
-  }
-  </script>
-</head>
-
-<!-- START JUMBOTRON -->
-<div data-pages="parallax">
-  <div class="container-fluid p-l-25 p-r-25 sm-p-l-0 sm-p-r-0">
-    <div class="inner">
-      <!-- START BREADCRUMB -->
-      <ol class="breadcrumb sm-p-b-5">
-        <li class="breadcrumb-item"><a href="#">Home</a></li>
-        <li class="breadcrumb-item active">login</li>
-      </ol>
-    </div>
-  </div>
-</div>
-<!-- END JUMBOTRON -->
-
-<!-- START CONTAINER FLUID -->
-<div class=" container-fluid container-fixed-lg">
-  <div class="row">
-    <div class="col-lg-6">
-      <!-- START card -->
-      <div class="card card-default">
-        <div class="card-header ">
-          <div class="card-title">
-            Option #one
+<html>
+  <head>
+    <script type="text/javascript">
+    window.onload = function()
+    {
+      // fix for windows 8
+      if (navigator.appVersion.indexOf("Windows NT 6.2") != -1)
+        document.head.innerHTML += '<link rel="stylesheet" type="text/css" href="{% static 'pages/css/windows.chrome.fix.css' %}" />'
+    }
+    </script>
+  </head>
+  <body class="fixed-header menu-pin">
+    <div class="register-container full-height sm-p-t-30">
+      <div class="d-flex justify-content-center flex-column full-height ">
+        <h3>Login</h3>
+        <p>
+          Create a pages account. If you have a facebook account, log into it for this process. Sign in with <a href="#" class="text-info">Facebook</a> or <a href="#" class="text-info">Google</a>
+        </p>
+        <form id="form-login" class="p-t-15" role="form" action="index.html">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group form-group-default">
+                <label>User name</label>
+                <input type="text" name="uname" placeholder="your username" class="form-control" required>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="card-block">
-          <h5>
-					Sign into your pages account
-				</h5>
-          <!-- START Login Form -->
-          <form id="form-login" class="p-t-15" role="form" action="/">
-            <!-- START Form Control-->
-            <div class="form-group form-group-default">
-              <label>Login</label>
-              <div class="controls">
-                <input type="text" name="username" placeholder="User Name" class="form-control" required>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group form-group-default">
+                <label>Password</label>
+                <input type="password" name="pass" placeholder="your password" class="form-control" required>
               </div>
             </div>
-            <!-- END Form Control-->
-            <!-- START Form Control-->
-            <div class="form-group form-group-default">
-              <label>Password</label>
-              <div class="controls">
-                <input type="password" class="form-control" name="password" placeholder="Credentials" required>
-              </div>
+          </div>
+          <div class="row m-t-10">
+            <div class="col-lg-6">
+              <p><small>I agree to the <a href="#" class="text-info">Pages Terms</a> and <a href="#" class="text-info">Privacy</a>.</small></p>
             </div>
-            <!-- START Form Control-->
-            <div class="row">
-              <div class="col-md-6 no-padding sm-p-l-10">
-                <div class="checkbox ">
-                  <input type="checkbox" value="1" id="checkbox1">
-                  <label for="checkbox1">Keep Me Signed in</label>
-                </div>
-              </div>
-              <div class="col-md-6 d-flex align-items-center justify-content-end">
-                <a href="#" class="text-info small">Help? Contact Support</a>
-              </div>
+            <div class="col-lg-6 text-right">
+              <a href="#" class="text-info small">Help? Contact Support</a>
             </div>
-            <!-- END Form Control-->
-            <button class="btn btn-primary btn-cons m-t-10" type="submit">Sign in</button>
-          </form>
-          <!--END Login Form-->
-        </div>
-      </div>
-      <!-- END card -->
-    </div>
-  </div>
-</div>
-<!-- END CONTAINER FLUID -->
+          </div>
+          <button class="btn btn-primary btn-cons m-t-10" type="submit">Login</button><br/>
 
-<script src="pages/js/pages.min.js"></script>
-<script>
-$(function()
-{
-  $('#form-login').validate()
-})
-</script>
+          <div class="col-lg-6" style="float: right;">
+            <button class="btn btn-block btn-info" type="button">
+                        <span class="pull-left"><i class="fa fa-facebook"></i></span>
+                        <span class="bold">Login with Facebook</span>
+            </button>
+            <button class="btn btn-block btn-danger" type="button">
+                        <span class="pull-left"><i class="fa fa-google-plus"></i></span>
+                        <span class="bold">Login with Google+</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="{% static 'pages/js/pages.min.js' %}"></script>
+    <script>
+    $(function()
+    {
+      $('#form-login').validate()
+    })
+    </script>
+  </body>
+</html>
 
 {% endblock %}
