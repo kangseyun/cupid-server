@@ -19,6 +19,7 @@ response_data = {}
 
 @csrf_exempt
 def ad_detail(request, id=0):
+    """
     if request.method == 'GET':
         try:
             obj = Ads.objects.filter(id=id)
@@ -36,6 +37,8 @@ def ad_detail(request, id=0):
             response_data['code'] = -1
 
     return JsonResponse(response_data, safe=False)
+    """
+    return render(request, 'ad_detail.html', {})
 
 
 @csrf_exempt
