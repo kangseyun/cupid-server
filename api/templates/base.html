@@ -515,11 +515,7 @@
               <a href="#" class="dropdown-item"><i class="pg-signals"></i> Help</a>
               <a href="#" class="clearfix bg-master-lighter dropdown-item">
                 <span class="pull-left">  
-                  {% if user.is_active %}
-                    LOGOUT
-                  {% else %}
-                    LOGIN
-                  {% endif %}
+                    <a href="{% url 'logout' %}?next={% url 'index' %}">Logout</a>
                 </span>
                 <span class="pull-right"><i class="pg-power"></i></span>
               </a>
@@ -529,7 +525,7 @@
           <!-- END User Info-->
           <a href="#" class="header-icon pg pg-alt_menu btn-link m-l-10 sm-no-margin d-inline-block" data-toggle="quickview" data-toggle-element="#quickview"></a>
           {% else %}
-          LOGIN
+          <a href="{% url 'login' %}">LOGIN</a>
           {% endif %}
         </div>
       </div>

@@ -5,11 +5,13 @@ from api.models import UserDetail
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
+from django.contrib.auth import login as auth_login
 import hashlib
 from datetime import datetime
 import uuid
 from functools import wraps
-
+from django.shortcuts import redirect
+from django.contrib.auth import logout as django_logout
 
 response_data = {
     'status': 'token_ok', 
@@ -36,29 +38,18 @@ def create_token(email):
 @csrf_exempt
 def login(request):
     if request.method == "POST":
-        email = request.POST.get('email')
-        password = request.POST.get('password')
-
-        loginInstance = authenticate(username=email, password=password)
+        username = request.POST.get('username')
+        password = request.POST.get('pass')
+        
+        loginInstance = authenticate(username=username, password=password)
         
         if loginInstance is not None:
-            token = create_token(loginInstance.email)
+            auth_login(request, loginInstance)
+            return render(request, 'index.html', {})
 
-            obj = UserDetail.objects.get(user=loginInstance)
-            obj.token = token
-            obj.last_login = datetime.now()
-            obj.save()
-
-            response_data['code'] = 1
-            response_data['token'] = token
         else:
-            response_data['code'] = 0
-
-    else:
-        response_data['code'] = -1
-    
-    # return JsonResponse(response_data, safe=False)
-    return render(request, 'login.html', {})
+            return render(request, 'login.html', {})    
+    return render(request, 'login.html', {})    
 
 
 @csrf_exempt
@@ -89,19 +80,10 @@ def join(request):
 
 @csrf_exempt
 def logout(request):
-    if request.method == "POST":
-        token = request.POST.get('token')
-
-        try:
-            userInstance = UserDetail.objects.get(token = token)
-            userInstance.token = -1
-            userInstance.save()
-
-            response_data['code'] = 1
-        except:
-            response_data['code'] = -1
-
-    return JsonResponse(response_data, safe=False)
+    if request.method == "GET":
+        django_logout(request)
+    return redirect('index')
+ 
 
 
 @csrf_exempt

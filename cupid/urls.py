@@ -6,10 +6,10 @@ from api.views.home import index
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', index),
-    url(r'^api/v1/auth/login/$', login),
+    url(r'^$', index, name='index'),
+    url(r'^login/$', login, name='login'),
     url(r'^api/v1/auth/join/$', join),
-    url(r'^api/v1/auth/logout/$', logout),
+    url(r'^api/v1/auth/logout/$', logout, name='logout'),
     url(r'^api/v1/ad/$', ad),
     url(r'^api/v1/ad/write/$', ad_write),
     url(r'^api/v1/ad/(?P<id>\d+)/$', ad_detail),   

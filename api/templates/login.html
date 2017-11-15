@@ -22,12 +22,13 @@
         <p>
           Create a pages account. If you have a facebook account, log into it for this process. Sign in with <a href="#" class="text-info">Facebook</a> or <a href="#" class="text-info">Google</a>
         </p>
-        <form id="form-login" class="p-t-15" role="form" action="index.html">
+        <form id="form-login" class="p-t-15" role="form" action="{% url 'login' %}" method="post">
+          {% csrf_token %}
           <div class="row">
             <div class="col-md-12">
               <div class="form-group form-group-default">
                 <label>User name</label>
-                <input type="text" name="uname" placeholder="your username" class="form-control" required>
+                <input type="text" name="username" placeholder="your username" class="form-control" required>
               </div>
             </div>
           </div>
