@@ -341,7 +341,9 @@ body.menu-pin .overlay .overlay-brand {
 }
 .page-sidebar .sidebar-header {
   /* Side-bar header */
-  display: block;
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
   height: 60px;
   line-height: 60px;
   background-color: #fff;

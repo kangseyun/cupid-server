@@ -339,9 +339,11 @@ body.menu-pin .overlay .overlay-brand {
 .page-sidebar .scroll-element {
   visibility: hidden;
 }
+
 .page-sidebar .sidebar-header {
   /* Side-bar header */
-  display: block;
+  display: flex;
+  align-items: center;
   height: 60px;
   line-height: 60px;
   background-color: #fff;
