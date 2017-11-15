@@ -4,7 +4,7 @@
   <head>
     <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
     <meta charset="utf-8" />
-    <title>Pages - Admin Dashboard UI Kit - Dashboard</title>
+    <title>Tontata</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
     <link rel="apple-touch-icon" href="{% static 'pages/ico/60.png' %}">
     <link rel="apple-touch-icon" sizes="76x76" href="{% static 'pages/ico/76.png' %}">
@@ -371,7 +371,8 @@
           <a href="#" class="search-link hidden-md-down" data-toggle="search"><i class="pg-search"></i>Type anywhere to <span class="bold">search</span></a>
         </div>
         <div class="d-flex align-items-center">
-          <!-- START NOTIFICATION LIST -->
+          {% if user.is_active %}            
+          <!-- 오른쪽 메뉴 .. -->
           <ul class="hidden-md-down notification-list no-margin hidden-sm-down b-grey b-r no-style p-l-30 p-r-20">
             <li class="p-r-10 inline">
               <div class="dropdown">
@@ -496,8 +497,9 @@
               <a href="#" class="header-icon pg pg-thumbs"></a>
             </li>
           </ul>
-          <!-- END NOTIFICATIONS LIST -->
-          <!-- START User Info-->
+          
+          <!-- 오른쪽 메뉴 끝 .. -->
+          <!-- 오른쪽 프로필 .. -->
           <div class="pull-left p-r-10 fs-14 font-heading hidden-md-down m-l-20">
             <span class="semi-bold">David</span> <span class="text-master">Nest</span>
           </div>
@@ -512,13 +514,23 @@
               <a href="#" class="dropdown-item"><i class="pg-outdent"></i> Feedback</a>
               <a href="#" class="dropdown-item"><i class="pg-signals"></i> Help</a>
               <a href="#" class="clearfix bg-master-lighter dropdown-item">
-                <span class="pull-left">Logout</span>
+                <span class="pull-left">  
+                  {% if user.is_active %}
+                    LOGOUT
+                  {% else %}
+                    LOGIN
+                  {% endif %}
+                </span>
                 <span class="pull-right"><i class="pg-power"></i></span>
               </a>
             </div>
           </div>
+          
           <!-- END User Info-->
           <a href="#" class="header-icon pg pg-alt_menu btn-link m-l-10 sm-no-margin d-inline-block" data-toggle="quickview" data-toggle-element="#quickview"></a>
+          {% else %}
+          LOGIN
+          {% endif %}
         </div>
       </div>
       <!-- END HEADER -->
