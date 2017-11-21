@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends '../base.html' %}
 {% load static %}
 
 {% block content %}
@@ -19,6 +19,21 @@
               <li>
                 <a href="#">
                   <span class="title"><i class="pg-sent"></i> 거래</span>
+                  <span class="badge pull-right">1</span>
+                </a>
+              </li>
+              <li>
+            </ul>
+            <p class="menu-title">광고 집행</p>
+            <ul class="main-menu">
+              <li class="">
+                <a href="{% url 'ad_write' %}">
+                  <span class="title"><i class="pg-inbox"></i> 광고 작성</span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <span class="title"><i class="pg-sent"></i> 광고 현황</span>
                   <span class="badge pull-right">1</span>
                 </a>
               </li>

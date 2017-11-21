@@ -16,3 +16,6 @@ def chat(requset):
 
 def notification(requset):
     return render(requset, './my/notification.html', {})
+
+def ad_write(requset):
+    return render(requset, './my/ad_write.html', {})
