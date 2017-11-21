@@ -353,8 +353,9 @@
           
           <!-- END User Info-->
           {% else %}
-          <a href="{% url 'login' %}">LOGIN</a> 
-          <a href="{% url 'join' %}">JOIN</a>
+          <a href="{% url 'login' %}">     
+            <button class="btn btn-primary btn-cons m-t-10" type="submit">로그인</button><br/>
+          </a> 
           {% endif %}
         </div>
       </div>
