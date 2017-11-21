@@ -2,7 +2,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from api.views.auth import login, join, logout
 from api.views.ad import ad, ad_detail, ad_write, ad_count
-from api.views.home import index
+from api.views.home import index, my
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -14,4 +14,5 @@ urlpatterns = [
     url(r'^api/v1/ad/write/$', ad_write),
     url(r'^api/v1/ad/(?P<id>\d+)/$', ad_detail),   
     url(r'^api/v1/ad/count/$', ad_count),   
+    url(r'^my/$', my, name='my'),   
 ]

@@ -35,7 +35,6 @@ def create_token(email):
 #     return wrapper
 
 
-@csrf_exempt
 def login(request):
     if request.method == "POST":
         username = request.POST.get('username')
@@ -52,15 +51,15 @@ def login(request):
     return render(request, 'login.html', {})    
 
 
-@csrf_exempt
 def join(request):
     if request.method == "POST":
         email = request.POST.get('email')
-        name = request.POST.get('userName')
+        name = request.POST.get('name')
         password = request.POST.get('password')
+        print(email, name, password)
 
         if not email or not name or not password:
-            response_data['code'] = 2            
+            return redirect('join')     
         else:
             
             userInstance = User.objects.create_user(name, email, password)
@@ -70,23 +69,19 @@ def join(request):
             obj.save()
 
 
-            response_data['email'] = email
-            response_data['code'] = 1
+            return redirect('index')
     else:
         response_data['code'] = -1
     # return JsonResponse(response_data, safe=False)
     return render(request, 'join.html', {})
 
 
-@csrf_exempt
 def logout(request):
     if request.method == "GET":
         django_logout(request)
     return redirect('index')
  
 
-
-@csrf_exempt
 def findEmail(request):
     if request.method == "POST":
         email = request.POST.get('email')
