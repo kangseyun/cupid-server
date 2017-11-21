@@ -13691,6 +13691,7 @@ Main components
     -webkit-transform: translate3d(-14px, 0, 0);
     transform: translate3d(-14px, 0, 0);
     -ms-transform: translate(-14px, 0);
+    margin-top: 11px;
   }
   body.menu-behind .page-sidebar {
     z-index: 799;
