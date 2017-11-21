@@ -339,6 +339,7 @@ body.menu-pin .overlay .overlay-brand {
 .page-sidebar .scroll-element {
   visibility: hidden;
 }
+
 .page-sidebar .sidebar-header {
   /* Side-bar header */
   display: flex;
@@ -356,6 +357,7 @@ body.menu-pin .overlay .overlay-brand {
   z-index: 10;
   position: relative;
 }
+
 .page-sidebar .sidebar-header .sidebar-header-controls {
   display: inline-block;
   -webkit-transition: -webkit-transform 0.4s cubic-bezier(0.05, 0.74, 0.27, 0.99);

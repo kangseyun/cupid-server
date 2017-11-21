@@ -66,71 +66,7 @@
             </a>
             <span class="icon-thumbnail"><i data-feather="shield"></i></span>
           </li>
-          <li class="m-t-30 ">
-            <a href="/api/v1/auth/join/" class="detailed">
-              <span class="title">회원가입</span>
-              <span class="details">join.html</span>
-            </a>
-            <span class="icon-thumbnail"><i data-feather="shield"></i></span>
-          </li>
-          <li class="m-t-30 ">
-            <a href="/api/v1/auth/login/" class="detailed">
-              <span class="title">로그인</span>
-              <span class="details">login.html</span>
-            </a>
-            <span class="icon-thumbnail"><i data-feather="shield"></i></span>
-          </li>
-          <li class="m-t-30 ">
-            <a href="/api/v1/ad/3/" class="detailed">
-              <span class="title">광고 상세보기</span>
-              <span class="details">ad_detail.html</span>
-            </a>
-            <span class="icon-thumbnail"><i data-feather="shield"></i></span>
-          </li>
-          <li class="m-t-30 ">
-            <a href="index.html" class="detailed">
-              <span class="title">Dashboard</span>
-              <span class="details">12 New Updates</span>
-            </a>
-            <span class="icon-thumbnail"><i data-feather="shield"></i></span>
-          </li>
-          <li class="">
-            <a href="email.html" class="detailed">
-              <span class="title">Email</span>
-              <span class="details">234 New Emails</span>
-            </a>
-            <span class="icon-thumbnail"><i data-feather="mail"></i></span>
-          </li>
-          <li class="">
-            <a href="social.html"><span class="title">Social</span></a>
-            <span class="icon-thumbnail"><i data-feather="users"></i></span>
-          </li>
-          <li>
-            <a href="javascript:;"><span class="title">Calendar</span>
-            <span class=" arrow"></span></a>
-            <span class="icon-thumbnail"><i data-feather="calendar"></i></span>
-            <ul class="sub-menu">
-              <li class="">
-                <a href="calendar.html">Basic</a>
-                <span class="icon-thumbnail">c</span>
-              </li>
-              <li class="">
-                <a href="calendar_lang.html">Languages</a>
-                <span class="icon-thumbnail">L</span>
-              </li>
-              <li class="">
-                <a href="calendar_month.html">Month</a>
-                <span class="icon-thumbnail">M</span>
-              </li>
-              <li class="">
-                <a href="calendar_lazy.html">Lazy load</a>
-                <span class="icon-thumbnail">La</span>
-              </li>
-              <li class="">
-                <a href="http://pages.revox.io/dashboard/2.1.0/doc/#calendar" target="_blank">Documentation</a>
-                <span class="icon-thumbnail">D</span>
-              </li>
-            </ul>
+          </ul>
           </li>
           <li class="">
             <a href="builder.html">
@@ -511,7 +447,8 @@
           <!-- END User Info-->
           <a href="#" class="header-icon pg pg-alt_menu btn-link m-l-10 sm-no-margin d-inline-block" data-toggle="quickview" data-toggle-element="#quickview"></a>
           {% else %}
-          <a href="{% url 'login' %}">LOGIN</a>
+          <a href="{% url 'login' %}">LOGIN</a> 
+          <a href="{% url 'join' %}">JOIN</a>
           {% endif %}
         </div>
       </div>
@@ -532,12 +469,8 @@
           <div class="copyright sm-text-center">
             <p class="small no-margin pull-left sm-pull-reset">
               <span class="hint-text">Copyright &copy; 2017 </span>
-              <span class="font-montserrat">REVOX</span>.
+              <span class="font-montserrat">Tontata</span>.
               <span class="hint-text">All rights reserved. </span>
-              <span class="sm-block"><a href="#" class="m-l-10 m-r-10">Terms of use</a> <span class="muted">|</span> <a href="#" class="m-l-10">Privacy Policy</a></span>
-            </p>
-            <p class="small no-margin pull-right sm-pull-reset">
-              Hand-crafted <span class="hint-text">&amp; made with Love</span>
             </p>
             <div class="clearfix"></div>
           </div>
@@ -551,9 +484,6 @@
     <div id="quickview" class="quickview-wrapper" data-pages="quickview">
       <!-- Nav tabs -->
       <ul class="nav nav-tabs">
-        <li class="" data-target="#quickview-notes" data-toggle="tab">
-          <a href="#">Notes</a>
-        </li>
         <li data-target="#quickview-alerts" data-toggle="tab">
           <a href="#">Alerts</a>
         </li>

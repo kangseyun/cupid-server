@@ -18,10 +18,7 @@
   <body class="fixed-header menu-pin">
     <div class="register-container full-height sm-p-t-30">
       <div class="d-flex justify-content-center flex-column full-height ">
-        <h3>Login</h3>
-        <p>
-          Create a pages account. If you have a facebook account, log into it for this process. Sign in with <a href="#" class="text-info">Facebook</a> or <a href="#" class="text-info">Google</a>
-        </p>
+        <h3>로그인</h3>
         <form id="form-login" class="p-t-15" role="form" action="{% url 'login' %}" method="post">
           {% csrf_token %}
           <div class="row">
@@ -38,14 +35,6 @@
                 <label>Password</label>
                 <input type="password" name="pass" placeholder="your password" class="form-control" required>
               </div>
-            </div>
-          </div>
-          <div class="row m-t-10">
-            <div class="col-lg-6">
-              <p><small>I agree to the <a href="#" class="text-info">Pages Terms</a> and <a href="#" class="text-info">Privacy</a>.</small></p>
-            </div>
-            <div class="col-lg-6 text-right">
-              <a href="#" class="text-info small">Help? Contact Support</a>
             </div>
           </div>
           <button class="btn btn-primary btn-cons m-t-10" type="submit">Login</button><br/>
