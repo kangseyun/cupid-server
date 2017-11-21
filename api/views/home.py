@@ -7,4 +7,12 @@ def index(request):
 
 
 def my(request):
-    return render(request, './chat.html', {})
+    return render(request, './my/index.html', {})
+
+
+def chat(requset):
+    return render(requset, './my/chat.html', {})
+
+
+def notification(requset):
+    return render(requset, './my/notification.html', {})

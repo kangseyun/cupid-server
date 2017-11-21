@@ -11,7 +11,7 @@
             <p class="menu-title">마이 톤타타</p>
             <ul class="main-menu">
               <li class="">
-                <a href="#">
+                <a href="{% url 'my' %}">
                   <span class="title"><i class="pg-inbox"></i> 내 정보</span>
                   <span class="badge pull-right">5</span>
                 </a>
@@ -27,13 +27,13 @@
             <p class="menu-title">마이 톤타타</p>
             <ul class="main-menu">
               <li class="">
-                <a href="#">
+                <a href="{% url 'notification' %}">
                   <span class="title"><i class="pg-inbox"></i> 알림</span>
                   <span class="badge pull-right">5</span>
                 </a>
               </li>
               <li class="active">
-                <a href="#">
+                <a href="{% url 'chat' %}">
                   <span class="title"><i class="pg-folder"></i> 메시지 </span>
                   <span class="badge pull-right">2</span>
                 </a>
