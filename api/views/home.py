@@ -16,5 +16,9 @@ def chat(requset):
     return render(requset, './my/chat.html', {})
 
 
+def ad_status(request):
+    ad = Ads.objects.all()
+    return render(request, './my/ad_status.html', {'ad': ad})
+
 def notification(requset):
     return render(requset, './my/notification.html', {})

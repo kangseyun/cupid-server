@@ -44,11 +44,12 @@ def login(request):
         
         if loginInstance is not None:
             auth_login(request, loginInstance)
-            return render(request, 'index.html', {})
+            return redirect('index')
 
         else:
             return render(request, 'login.html', {})    
-    return render(request, 'login.html', {})    
+    elif request.method == "GET":
+        return render(request, 'login.html', {})    
 
 
 def join(request):

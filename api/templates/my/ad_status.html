@@ -1,0 +1,25 @@
+{% extends './my_base.html' %}
+{% load static %}
+
+{% block my %} 
+    <table id="myDataTable" class="table table-hover" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>상태</th>
+                <th>카테고리</th>
+                <th>제목</th>
+                <th>마감</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in ad %}
+            <tr>
+                <td>진행중</td>
+                <td>{{item.category}}</td>
+                <td>{{item.title}}</td>
+                <td>D-15</td>                
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
