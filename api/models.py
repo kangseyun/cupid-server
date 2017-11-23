@@ -29,16 +29,6 @@ class Category(models.Model):
         return self.name
 
 
-class Ad_type(models.Model): 
-    id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=50, verbose_name='이름')
-
-    def save(self, *args, **kwargs):
-        super(Ad_type, self).save(*args, **kwargs)
-    
-    def __str__(self):
-        return self.name
-
 class Resume(models.Model):
     user = models.ForeignKey(User)
     create_date = models.DateTimeField(auto_now_add=True)
@@ -49,7 +39,7 @@ class Resume(models.Model):
 
 class Ads(models.Model):    
     id = models.AutoField(primary_key=True)
-    ad_type = models.ForeignKey(Ad_type, verbose_name='광고타입')
+    category = models.ForeignKey(Category, verbose_name='광고타입')
     title = models.CharField(max_length=50, verbose_name='제목')
     author = models.ForeignKey(UserDetail, verbose_name='작성자')
     budget = models.IntegerField(blank=False, default=0)

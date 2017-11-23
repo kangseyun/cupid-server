@@ -10,8 +10,8 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from datetime import datetime
-from api.models import Ads, Ad_type
-from api.validation.AdValidation import AdsValidation
+from api.models import Ads, Category
+from django.shortcuts import redirect
 
 
 response_data = {}
@@ -60,24 +60,22 @@ def ad_count(request):
     return JsonResponse(response_data, safe=False)
 
 
-@csrf_exempt
 def ad_write(request):
     if request.method == "POST":
-        token = request.POST.get('token')
-        ad_type = request.POST.get('adType')
-        title = request.POST.get('title')
+        category = request.POST.get('category')
+        title = request.POST.get('subject')
         budget = request.POST.get('budget')
-        limit = request.POST.get('limit')
-
+        limit = request.POST.get('limit', 0)
         # validation
-        if token and ad_type and title and budget and limit:
-            ad = Ad_type.objects.get(id=ad_type)
-            user = UserDetail.objects.get(token=token)
+        if category and title and budget:
+            ad = Category.objects.get(id=category)
+            user = UserDetail.objects.get(user=request.user)
 
-            obj = Ads(ad_type=ad, title=title, author=user, budget=budget, limit=limit)
+            obj = Ads(category=ad, title=title, author=user, budget=budget, limit=limit)
             obj.save()
-            response_data['code'] = 1
+            return redirect('my')
         else:
-            response_data['code'] = -1
-
-    return JsonResponse(response_data, safe=False)
+            return redirect('ad_write')
+    elif request.method == "GET":
+        category = Category.objects.all()
+        return render(request, './my/ad_write.html', {'category': category})

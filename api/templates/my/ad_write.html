@@ -16,7 +16,7 @@
                             <label>카테고리</label>
                             <select class="form-control" style="height:auto" name="category">
                                 {% for item in category %}
-                                    <option>{{item}}</option>
+                                    <option value="{{ item.id }}">{{item}}</option>
                                 {% endfor %}
                             </select>
                             </div>
