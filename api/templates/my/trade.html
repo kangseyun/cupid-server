@@ -1,0 +1,25 @@
+{% extends './my_base.html' %}
+{% load static %}
+
+{% block my %} 
+    <table id="myDataTable" class="table table-hover" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>타입</th>
+                <th>이름</th>
+                <th>파급력</th>
+                <th>예상단가</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <input type="checkbox" />
+                </td>
+                <td>강세윤</td>
+                <td>안녕하세요 반갑습니다. 혹시 광고 집행하고 싶은데 연락가능 할까요?</td>
+                <td>1일전</td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}

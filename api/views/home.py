@@ -12,12 +12,15 @@ def my(request):
     return render(request, './my/index.html', {})
 
 
-def chat(requset):
-    return render(requset, './my/chat.html', {})
+def chat(request):
+    return render(request, './my/chat.html', {})
 
+def trade(request):
+    return render(request, './my/trade.html', {})
 
 def ad_status(request):
-    ad = Ads.objects.all()
+    user = UserDetail.objects.get(user=request.user)
+    ad = Ads.objects.filter(author=user)
     return render(request, './my/ad_status.html', {'ad': ad})
 
 def notification(requset):
