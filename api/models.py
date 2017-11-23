@@ -18,6 +18,17 @@ class UserDetail(models.Model):
         return self.user.email
 
 
+class Category(models.Model): 
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=50, verbose_name='이름')
+
+    def save(self, *args, **kwargs):
+        super(Category, self).save(*args, **kwargs)
+    
+    def __str__(self):
+        return self.name
+
+
 class Ad_type(models.Model): 
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=50, verbose_name='이름')

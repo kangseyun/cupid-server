@@ -7,40 +7,43 @@
           <div class="col-md-12 no-padding">
             <div class="wysiwyg5-wrapper email-toolbar-wrapper">
             </div>
-            <form id="form-project" role="form" autocomplete="off">
-              <div class="form-group-attached">
-                <div class="row clearfix">
-                  <div class="col-md-6">
-                    <div class="form-group form-group-default" style="height:auto">
-                      <label>카테고리</label>
-                      <select class="form-control" style="height:auto" name="category">
-                          <option>adf</option>
-                      </select>
+            <form id="form-project" role="form" autocomplete="off" method="POST" action="{% url 'ad_write' %}">
+                    {% csrf_token %}
+                    <div class="form-group-attached">
+                        <div class="row clearfix">
+                        <div class="col-md-6">
+                            <div class="form-group form-group-default" style="height:auto">
+                            <label>카테고리</label>
+                            <select class="form-control" style="height:auto" name="category">
+                                {% for item in category %}
+                                    <option>{{item}}</option>
+                                {% endfor %}
+                            </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group form-group-default" style="height:auto"> 
+                            <label>예산</label>
+                            <input type="text" class="form-control" placeholder="100,000,000" name="budget">
+                            </div>
+                        </div>
+                        </div>
+                        <div class="form-group form-group-default">
+                        <label>광고 제목</label>
+                        <input type="text" class="form-control" name="subject">
+                        </div>
                     </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="form-group form-group-default" style="height:auto"> 
-                      <label>예산</label>
-                      <input type="text" class="form-control" placeholder="100,000,000" name="budget">
+                    <div class="wysiwyg5-wrapper email-body-wrapper">
+                    <textarea class="wysiwyg email-body" style="height:350px" name="content"></textarea>
                     </div>
-                  </div>
                 </div>
-                <div class="form-group form-group-default">
-                  <label>광고 제목</label>
-                  <input type="text" class="form-control" name="subject">
-                </div>
-              </div>
-            </form>
-            <div class="wysiwyg5-wrapper email-body-wrapper">
-              <textarea class="wysiwyg email-body" style="height:350px" name="content"></textarea>
             </div>
-          </div>
-        </div>
-        <div class="row p-b-20">
-          <div class="col-md-11">
-            <button class="btn btn-white btn-cons">임시저장</button>
-            <button class="btn btn-primary btn-cons m-l-10">광고 게시</button>
-          </div>
-        </div>
+            <div class="row p-b-20">
+            <div class="col-md-11">
+                <button class="btn btn-white btn-cons">임시저장</button>
+                <input type="submit" class="btn btn-primary btn-cons m-l-10" value="광고게시">
+            </div>
+            </div>
+        </form>
       </div>
 {% endblock %}
