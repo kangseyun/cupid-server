@@ -5,7 +5,8 @@ from api.models import Ads, Category, UserDetail
 
 
 def index(request):
-    return render(request, './index.html', {})
+    ad = Ads.objects.all()
+    return render(request, './index.html', {'ad': ad})
 
 def my(request):
     return render(request, './my/index.html', {})
