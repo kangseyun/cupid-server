@@ -18,6 +18,31 @@ class UserDetail(models.Model):
         return self.user.email
 
 
+class NotificationType(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=100)
+    
+    def save(self, *args, **kwargs):
+        super(NotificationType, self).save(*args, **kwargs)
+
+    def __str__(self):
+        return self.name
+
+
+class Notification(models.Model):
+    id = models.AutoField(primary_key=True)
+    user = models.ForeignKey(UserDetail)
+    type = models.ForeignKey(NotificationType)
+    content = models.CharField(max_length=100)
+    check = models.BooleanField(default=False)
+
+    def save(self, *args, **kwargs):
+        super(Notification, self).save(*args, **kwargs)
+
+    def __str__(self):
+        return self.content
+
+
 class Category(models.Model): 
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=50, verbose_name='이름')
