@@ -111,3 +111,12 @@ class Reply(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class TontataChat(models.Model):
+    id = models.AutoField(primary_key=True)
+    content = models.CharField(max_length=300, verbose_name='내용')
+    from_user = models.ForeignKey(UserDetail, related_name='from_user')
+    to_user = models.ForeignKey(UserDetail, related_name='to_user')
+    create_at = models.DateTimeField(auto_now=True)
+    check = models.BooleanField(default=False)
