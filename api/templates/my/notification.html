@@ -11,11 +11,13 @@
                     </tr>
                 </thead>
                 <tbody>
+                    {% for i in noti %}
                     <tr>
-                        <td>거래신청</td>
-                        <td>강세윤님이 거래 신청을 하셨습니다.</td>
+                        <td>{{i.type}}}</td>
+                        <td>{{i.content}}}</td>
                         <td>1일전</td>
                     </tr>
+                    {% endfor %}
                 </tbody>
             </table>
                {% endblock %}

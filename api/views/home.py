@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.shortcuts import redirect
-from api.models import Ads, Category, UserDetail
+from api.models import Ads, Category, UserDetail, Notification
 
 
 def index(request):
@@ -23,5 +23,8 @@ def ad_status(request):
     ad = Ads.objects.filter(author=user)
     return render(request, './my/ad_status.html', {'ad': ad})
 
-def notification(requset):
-    return render(requset, './my/notification.html', {})
+def notification(request):
+    user = UserDetail.objects.get(user=request.user)
+    noti = Notification.objects.filter(user=user)
+
+    return render(request, './my/notification.html', {'noti': noti})
