@@ -19,26 +19,12 @@ response_data = {}
 
 @csrf_exempt
 def ad_detail(request, id=0):
-    """
     if request.method == 'GET':
         try:
-            obj = Ads.objects.filter(id=id)
-            response_data['data'] = serializers.serialize('json', obj)
+            obj = Ads.objects.get(id=id)
         except Ads.DoesNotExist:
             response_data['code'] = -1
-    elif request.method == 'PUT':
-        print("PUT") # 수정
-    elif request.method == 'DELETE':
-        try:
-            instance = Ads.objects.get(id=id)
-            instance.delete()
-            response_data['code'] = 1
-        except:
-            response_data['code'] = -1
-
-    return JsonResponse(response_data, safe=False)
-    """
-    return render(request, 'ad_detail.html', {})
+        return render(request, 'ad_detail.html', {"view": obj})
 
 
 @csrf_exempt

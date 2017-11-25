@@ -44,7 +44,7 @@
                     <div class="user-pic">
                       <img alt="Profile Image" width="33" height="33" data-src-retina="{% static 'assets/img/profiles/8x.jpg' %}" data-src="{% static 'assets/img/profiles/8.jpg' %}" src="{% static 'assets/img/profiles/8x.jpg' %}">
                     </div>
-                    <h5>Jeff Curtis</h5>
+                    <h5>{{ view.author }}</h5>
                     <h6>Shared a Tweet
 			 			<span class="location semi-bold"><i
 			 					class="fa fa-map-marker"></i> SF, California</span>
@@ -52,7 +52,7 @@
                   </div>
                   <div class="card-header clearfix" align="center">
                     <h5>업종</h5>
-                    <p class="no-margin fs-16">전기전자</p>
+                    <p class="no-margin fs-16">{{ view.category.name }}</p>
                   </div>
                   <div class="card-header clearfix" align="center">
                     <h5>지역</h5>
@@ -88,14 +88,12 @@
                       </div>
                     </div>
                     <div style="float:right;">
-                      <h3 class="no-margin p-b-5">N9-X10 & X20 보조배터리 리뷰 영상 유투버를 모집합니다.</h3>
+                      <h3 class="no-margin p-b-5">{{ view.title }}</h3>
                       <p class="no-margin fs-14">마감 2일 </p>
                       <p class="no-margin fs-16">총 4명 지원</p>
                     </div>
                   </div>
                   <div class="card-description">
-                    <p>What you think, you become. What you feel, you attract. What you imagine, you create - Buddha. <a href="#">#quote</a></p>
-                    <div class="via">via Twitter</div>
                   </div>
                 </div>
                 <!-- END ITEM -->

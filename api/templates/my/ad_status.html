@@ -13,7 +13,7 @@
         </thead>
         <tbody>
             {% for item in ad %}
-            <tr data="{{item.id}}">
+            <tr data="{{item.id}}" onclick="window.location.href = '{% url "ad_detail" item.id %}';">
                 <td>진행중</td>
                 <td>{{item.category}}</td>
                 <td>{{item.title}}</td>
