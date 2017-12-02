@@ -1,3 +1,4 @@
+from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from api.models import Resume
 from django.views.decorators.csrf import csrf_exempt
@@ -9,6 +10,13 @@ response_data = {
     'resume_id': '',
     'token': ''
 }
+
+
+@csrf_exempt
+def resume(request):
+    # 크리에이터 열람
+    if request.method == "GET":
+        return render(request, 'resume_list.html', {})
 
 
 @csrf_exempt
