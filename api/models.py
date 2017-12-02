@@ -15,7 +15,6 @@ class UserDetail(models.Model):
         verbose_name = '유저'
         verbose_name_plural = '유저'
 
-
     def save(self, *args, **kwargs):
         super(UserDetail, self).save(*args, **kwargs)
 
@@ -37,6 +36,22 @@ class NotificationType(models.Model):
     def __str__(self):
         return self.name
 
+
+class Location(models.Model):
+    id = models.AutoField(primary_key=True)
+    x = models.FloatField()
+    y = models.FloatField()
+    title = models.CharField(max_length=100, verbose_name="주소")
+
+    class Meta:
+        verbose_name = '주소'
+        verbose_name_plural = '주소'
+
+    def save(self, *args, **kwargs):
+        super(Location, self).save(*args, **kwargs)
+
+    def __str__(self):
+        return self.title
 
 
 class Notification(models.Model):
@@ -89,6 +104,7 @@ class Ads(models.Model):
     limit = models.IntegerField(blank=False, default=0)
     create_at = models.DateTimeField(auto_now=False)
     img = models.ImageField(upload_to = 'image/', blank=True, null=True)
+    location = models.ForeignKey(Location, blank=True, null=True)
 
     class Meta:
         verbose_name = '광고'
@@ -169,21 +185,5 @@ class TontataChat(models.Model):
         verbose_name = '채팅'
         verbose_name_plural = '채팅'
 
-class Location(models.Model):
-    id = models.AutoField(primary_key=True)
-    x = models.FloatField()
-    x = models.FloatField()
-    ad = models.ForeignKey(Ads)
-    title = models.CharField(max_length=100, verbose_name="주소")
-
-    class Meta:
-        verbose_name = '주소'
-        verbose_name_plural = '주소'
-
-    def save(self, *args, **kwargs):
-        super(Location, self).save(*args, **kwargs)
-
-    def __str__(self):
-        return self.title
 
     
