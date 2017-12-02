@@ -26,15 +26,6 @@ def create_token(email):
     return m.hexdigest()
 
 
-# def token_check(func):
-#     @wraps(func)
-#     def wrapper(*args, **kwargs):
-#         if kwargs.get('username') != 'admin':
-#             raise Exception("아 진짜 안된다니까 그러네..")
-#         return func(*args, **kwargs)
-#     return wrapper
-
-
 def login(request):
     if request.method == "POST":
         username = request.POST.get('username')
