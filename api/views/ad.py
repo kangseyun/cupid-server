@@ -52,12 +52,15 @@ def ad_write(request):
         title = request.POST.get('subject')
         budget = request.POST.get('budget')
         limit = request.POST.get('limit', 0)
+        img = request.FILES['img']
+
+        print(img)
         # validation
-        if category and title and budget:
+        if category and title and budget and img:
             ad = Category.objects.get(id=category)
             user = UserDetail.objects.get(user=request.user)
 
-            obj = Ads(category=ad, title=title, author=user, budget=budget, limit=limit)
+            obj = Ads(category=ad, title=title, author=user, budget=budget, limit=limit, img=img)
             obj.save()
             return redirect('my')
         else:

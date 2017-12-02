@@ -7,6 +7,9 @@ __pycache__/
 *.so
 .vscode/
 cupid/my.cnf
+image/
+image/*
+image
 
 node_modules/*
 package-lock.json

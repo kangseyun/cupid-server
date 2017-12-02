@@ -11,6 +11,11 @@ class UserDetail(models.Model):
     tel = models.CharField(max_length=15, verbose_name='번호', blank=True, null=True)
     last_login = models.DateTimeField(blank=True, null=True)
 
+    class Meta:
+        verbose_name = '유저'
+        verbose_name_plural = '유저'
+
+
     def save(self, *args, **kwargs):
         super(UserDetail, self).save(*args, **kwargs)
 
@@ -22,11 +27,16 @@ class NotificationType(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100)
     
+    class Meta:
+        verbose_name = '알림타입'
+        verbose_name_plural = '알림타입'
+
     def save(self, *args, **kwargs):
         super(NotificationType, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.name
+
 
 
 class Notification(models.Model):
@@ -35,6 +45,10 @@ class Notification(models.Model):
     type = models.ForeignKey(NotificationType)
     content = models.CharField(max_length=100)
     check = models.BooleanField(default=False)
+    
+    class Meta:
+        verbose_name = '알림'
+        verbose_name_plural = '알림'
 
     def save(self, *args, **kwargs):
         super(Notification, self).save(*args, **kwargs)
@@ -46,6 +60,10 @@ class Notification(models.Model):
 class Category(models.Model): 
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=50, verbose_name='이름')
+
+    class Meta:
+        verbose_name = '카테고리'
+        verbose_name_plural = '카테고리'
 
     def save(self, *args, **kwargs):
         super(Category, self).save(*args, **kwargs)
@@ -70,6 +88,11 @@ class Ads(models.Model):
     budget = models.IntegerField(blank=False, default=0)
     limit = models.IntegerField(blank=False, default=0)
     create_at = models.DateTimeField(auto_now=False)
+    img = models.ImageField(upload_to = 'image/', blank=True, null=True)
+
+    class Meta:
+        verbose_name = '광고'
+        verbose_name_plural = '광고'
 
     def save(self, *args, **kwargs):
         if self.title:
@@ -87,7 +110,7 @@ class AdTrade(models.Model):
     id = models.AutoField(primary_key=True)
     creater = models.ForeignKey(UserDetail, verbose_name='크리에이터', related_name='create')
     adbos = models.ForeignKey(UserDetail, verbose_name='광고주', related_name='ad')
-    status = models.IntegerField(default = 0) # 0 진행중 1 완료
+    status = models.IntegerField(default = 0) # 0 요청, 1 요청수락, 2 진행중, 3 완료
     ad = models.ForeignKey(Ads)
     create_at = models.DateTimeField(auto_now=False)
 
@@ -106,6 +129,10 @@ class AdRequest(models.Model):
     #recipient = models.ForeignKey(UserDetail)
     accept = models.IntegerField(blank=False, default=0)
     
+    class Meta:
+        verbose_name = '거래요청'
+        verbose_name_plural = '거래요청'
+
     def __str__(self):
         return self.name
 
@@ -137,3 +164,26 @@ class TontataChat(models.Model):
     to_user = models.ForeignKey(UserDetail, related_name='to_user')
     create_at = models.DateTimeField(auto_now=True)
     check = models.BooleanField(default=False)
+
+    class Meta:
+        verbose_name = '채팅'
+        verbose_name_plural = '채팅'
+
+class Location(models.Model):
+    id = models.AutoField(primary_key=True)
+    x = models.FloatField()
+    x = models.FloatField()
+    ad = models.ForeignKey(Ads)
+    title = models.CharField(max_length=100, verbose_name="주소")
+
+    class Meta:
+        verbose_name = '주소'
+        verbose_name_plural = '주소'
+
+    def save(self, *args, **kwargs):
+        super(Location, self).save(*args, **kwargs)
+
+    def __str__(self):
+        return self.title
+
+    
