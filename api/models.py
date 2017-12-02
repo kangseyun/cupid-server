@@ -83,6 +83,23 @@ class Ads(models.Model):
         return self.title
 
 
+class AdTrade(models.Model):
+    id = models.AutoField(primary_key=True)
+    creater = models.ForeignKey(UserDetail, verbose_name='크리에이터', related_name='create')
+    adbos = models.ForeignKey(UserDetail, verbose_name='광고주', related_name='ad')
+    status = models.IntegerField(default = 0) # 0 진행중 1 완료
+    ad = models.ForeignKey(Ads)
+    create_at = models.DateTimeField(auto_now=False)
+
+    def save(self, *args, **kwargs):
+        if self.id:
+            now_time = datetime.now()
+            expire_second = 3600
+            self.create_at = now_time + timedelta(seconds = expire_second)
+            
+        super(AdTrade, self).save(*args, **kwargs)
+
+
 class AdRequest(models.Model):
     ad_id = models.ForeignKey(Ads)
     sender = models.ForeignKey(UserDetail)

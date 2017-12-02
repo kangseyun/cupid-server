@@ -11,7 +11,6 @@ def index(request):
 def my(request):
     return render(request, './my/index.html', {})
 
-
 def chat(request):
     return render(request, './my/chat.html', {})
 
@@ -26,5 +25,4 @@ def ad_status(request):
 def notification(request):
     user = UserDetail.objects.get(user=request.user)
     noti = Notification.objects.filter(user=user)
-
     return render(request, './my/notification.html', {'noti': noti})
