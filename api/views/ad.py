@@ -27,6 +27,13 @@ def ad_detail(request, id=0):
         return render(request, 'ad_detail.html', {"view": obj})
 
 
+# 테스트 위한 render 함수 -> 테스트 후 삭제할 것 !
+@csrf_exempt
+def ad_detail_render(request, id=0):
+    if request.method == 'GET':
+        return render(request, 'ad_detail.html')
+
+
 @csrf_exempt
 def ad(request):
     if request.method == "GET":
