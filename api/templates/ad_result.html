@@ -1,0 +1,149 @@
+
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+
+
+<!-- START PAGE CONTENT -->
+<div class="content ">
+  <div class="social-wrapper">
+    <!-- END JUMBOTRON -->
+    <div class="container-fluid container-fixed-lg sm-p-l-0 sm-p-r-0">
+
+      <!-- START JUMBOTRON -->
+      <div data-pages="parallax">
+        <div class="container-fluid p-l-25 p-r-25 sm-p-l-0 sm-p-r-0">
+          <div class="inner">
+            <!-- START BREADCRUMB -->
+            <ol class="breadcrumb sm-p-b-5">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Ad result</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+      <!-- END JUMBOTRON -->
+
+      <div class="feed">
+        <!-- START DAY -->
+        <div class="day" data-social="day">
+          <!-- START ITEM -->
+          <div class="card no-border bg-transparent full-width" data-social="item">
+            <!-- START CONTAINER FLUID -->
+            <div class="container-fluid p-t-30 p-b-30 ">
+              <div class="row">
+
+                <!-- START ITEM -->
+                <div class="card social-card share col1" data-social="item">
+                  <div class="circle" data-toggle="tooltip" title="Label" data-container="body">
+                  </div>
+                  <div class="card-header clearfix">
+                    <div class="user-pic">
+                      <img alt="Profile Image" width="33" height="33" data-src-retina="{% static 'assets/img/profiles/8x.jpg' %}" data-src="{% static 'assets/img/profiles/8.jpg' %}" src="{% static 'assets/img/profiles/8x.jpg' %}">
+                    </div>
+                    <h5>김경이</h5>
+                    <h6>
+			 			<span class="location semi-bold"><i
+			 					class="fa fa-map-marker"></i> Facebook Creator</span>
+			 		</h6>
+                  </div>
+                  <div class="card-header clearfix" align="center">
+                    <table width="90%" style="font-size:1.1em; text-align:center;">
+                      <tr>
+                        <td><h5>업종</h5></td>
+                        <td><h5>지역</h5></td>
+                        <td><h5>예산</h5></td>
+                      </tr>
+                      <tr>
+                        <td>전기전자</td>
+                        <td>부산광역시</td>
+                        <td>100,000</td>
+                      </tr>
+                    </table>
+                  </div>
+                  <div class="card-header clearfix" align="center">
+                    <h5>지역</h5>
+                    <p class="no-margin fs-14">부산광역시</p>
+                  </div>
+                  <div class="card-header clearfix" align="center">
+                    <h5>예산</h5>
+                    <p class="no-margin fs-14">100,000 원</p>
+                  </div>
+                  <div class="card-header clearfix" align="center">
+                    <h5>마감 시간</h5>
+                    <p class="no-margin fs-14">2017-12-12</p>
+                  </div>
+                  <div class="card-header clearfix" align="center">
+                    <h5>모집률</h5>
+                    <p class="no-margin fs-16">
+                      <div style="display:flex; width:50%;">
+                        <div class="progress m-t-10" style="flex:3;">
+                          <div class="progress-bar progress-bar-primary" style="width:35%;"></div>
+                        </div>
+                        <div class="m-t-4 m-l-3" style="flex:1; font-size:0.9em;">
+                          35%
+                        </div>
+                      </div>
+                    </p>
+                  </div>
+                  <div class="card-description" align="center">
+
+                  </div>
+                </div>
+                <!-- END ITEM -->
+
+                <!-- START ITEM -->
+                <div class="card social-card share col2" data-social="item">
+                  <div class="circle" data-toggle="tooltip" title="Label" data-container="body">
+                  </div>
+                  <div class="card-header clearfix">
+                    <div style="float:left;" class="m-t-10 fs-16">
+                      훌리오(JULIO) 2차 광고 모집
+                    </div>
+                    <div style="float:right;">
+                      <h3 class="no-margin p-b-5">{{ view.title }}</h3>
+                      <p class="no-margin fs-14">광고결과 </p>
+                      <p class="no-margin fs-16">총 4명 집행</p>
+                    </div>
+                  </div>
+                  <div class="card-description">
+                    <img width="100%" height="180px" src="{% static 'assets/img/julio.jpg' %}">
+                    <table class="m-t-50" width="90%" style="font-size:1em; text-align:center;">
+                      <tr class="fs-14" style="font-weight:bold;">
+                        <td>진행 플랫폼</td>
+                        <td>평균 조회수</td>
+                        <td>총 Like수</td>
+                        <td>총 댓글수</td>
+                      </tr>
+                      <tr>
+                        <td>Facebook</td>
+                        <td>76,544</td>
+                        <td>85,311</td>
+                        <td>12,764</td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <!-- END ITEM -->
+              </div>
+            </div>
+            <!-- END CONTAINER FLUID -->
+          </div>
+          <!-- END ITEM -->
+        </div>
+        <!-- END DAY -->
+      </div>
+      <!-- END FEED -->
+    </div>
+    <!-- END CONTAINER FLUID -->
+    </div>
+    <!-- /container -->
+  </div>
+</div>
+<!-- END PAGE CONTENT -->
+
+
+{% endblock %}

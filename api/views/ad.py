@@ -85,3 +85,9 @@ def ad_write(request):
     elif request.method == "GET":
         category = Category.objects.all()
         return render(request, './my/ad_write.html', {'category': category})
+
+
+@csrf_exempt
+def ad_result(request, id=0):
+    if request.method == 'GET':
+        return render(request, 'ad_result.html')
