@@ -1,7 +1,7 @@
 from django.conf.urls import url, include
 from django.contrib import admin
 from api.views.auth import login, join, logout
-from api.views.resume import resume
+from api.views.resume import resume, resume_detail
 from api.views.ad import ad, ad_detail, ad_write, ad_count, ad_write, ad_result
 from api.views.home import index, my, notification, chat, ad_status, trade
 
@@ -14,6 +14,7 @@ urlpatterns = [
     url(r'^api/v1/auth/join/$', join, name='join'),
     url(r'^api/v1/auth/logout/$', logout, name='logout'),
     url(r'^api/v1/resume/$', resume),
+    url(r'^api/v1/resume/detail/$', resume_detail, name='resume_detail'),
     url(r'^api/v1/ad/$', ad),
     url(r'^api/v1/ad/detail/$', ad_detail_render), # 테스트 후 삭제
     url(r'^api/v1/ad/(?P<id>\d+)/$', ad_detail, name='ad_detail'),
