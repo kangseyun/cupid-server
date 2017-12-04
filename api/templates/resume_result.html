@@ -63,6 +63,15 @@
                         <div class="card-header clearfix">
                             <button class="btn btn-primary">연락하기</button>                            
                         </div>
+                        {% if call == 1 %}
+                        <div class="card-header clearfix">
+                            <button class="btn btn-primary">수락하기</button>                            
+                        </div>
+                        {% elif call == 2 %}
+                        <div class="card-header clearfix">
+                            <button class="btn btn-primary">진행중</button>                            
+                        </div>
+                        {% endif %}
                   </div>
                 </div>
                 <!-- END ITEM -->

@@ -128,7 +128,7 @@ class AdTrade(models.Model):
     adbos = models.ForeignKey(UserDetail, verbose_name='광고주', related_name='ad')
     status = models.IntegerField(default = 0) # 0 요청, 1 요청수락, 2 진행중, 3 완료
     ad = models.ForeignKey(Ads)
-    create_at = models.DateTimeField(auto_now=False)
+    create_at = models.DateTimeField(auto_now=False, blank=True, null=True)
 
     def save(self, *args, **kwargs):
         if self.id:

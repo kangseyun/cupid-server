@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.shortcuts import redirect
-from api.models import Ads, Category, UserDetail, Notification
+from api.models import Ads, Category, UserDetail, Notification, AdTrade
 
 
 def index(request):
@@ -15,7 +15,11 @@ def chat(request):
     return render(request, './my/chat.html', {})
 
 def trade(request):
-    return render(request, './my/trade.html', {})
+    user = UserDetail.objects.get(user = request.user)
+    obj = AdTrade.objects.filter(adbos=user)
+    for i in obj:
+        print(i)
+    return render(request, './my/trade.html', {'ad': obj})
 
 def ad_status(request):
     user = UserDetail.objects.get(user=request.user)
