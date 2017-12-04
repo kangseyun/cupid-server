@@ -15,65 +15,138 @@
           <!-- START BREADCRUMB -->
           <ol class="breadcrumb sm-p-b-5">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">크리에이터</li>
+            <li class="breadcrumb-item active">Main</li>
           </ol>
         </div>
       </div>
     </div>
     <!-- END JUMBOTRON -->
 
-    <!-- START CATEGORY -->
-    <div class="gallery">
-      <div class="gallery-filters p-t-20 p-b-10">
-        <ul class="list-inline text-right">
-          <li><a href="#" class="active text-master p-r-5 p-l-5">단가</a></li>
-          <li><a href="#" class="text-master hint-text p-r-5 p-l-5">인기</a></li>
-          <!-- <li>
-            <button class="btn btn-primary m-l-10" data-toggle="filters">조건 검색</button>
-          </li> -->
-        </ul>
-      </div>
-      {% for item in ad %}
-      <div class="gallery-item " data-width="1" data-height="1">
-        <!-- START PREVIEW -->
-        <img src="{% static 'assets/img/gallery/4.jpg' %}" alt="" class="image-responsive-height">
-        <!-- END PREVIEW -->
-        <!-- START ITEM OVERLAY DESCRIPTION -->
-        <div class="overlayer bottom-left full-width">
-          <div class="overlayer-wrapper item-info ">
-            <div class="gradient-grey p-l-20 p-r-20 p-t-20 p-b-5">
-              <div class="">
-                <p class="pull-left bold text-white fs-14 p-t-10">{{ item.title}}</p>
-                <h5 class="pull-right semi-bold text-white font-montserrat bold">₩{{item.budget}}</h5>
-                <div class="clearfix"></div>
+    <div class="m-l-10 m-t-10 m-r-10 row">
+      <!-- START CREATOR LIST -->
+      <div class="col-lg-4 sm-no-padding">
+        <div class="card card-transparent">
+          <div class="card-block no-padding">
+            <div id="card-advance" class="card card-default">
+              <div class="card-header  ">
+                <div class="card-title">Recommend you!
+                </div>
+                <div class="card-controls">
+                  <ul>
+                    <li>
+                      <div class="dropdown">
+                        <a id="card-settings" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
+                          <i class="card-icon card-icon-settings "></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="card-settings">
+                          <a href="#" class="dropdown-item">API</a>
+                          <a href="#" class="dropdown-item">Preferences</a>
+                          <a href="#" class="dropdown-item">About</a>
+                        </div>
+                      </div>
+                    </li>
+                    <li><a href="#" class="card-close" data-toggle="close"><i
+	    								class="card-icon card-icon-close"></i></a>
+                    </li>
+                  </ul>
+                </div>
               </div>
-              <div class="m-t-10">
-                <div class="thumbnail-wrapper d32 circular m-t-5">
-                  <img width="40" height="40" src="{% static 'assets/img/profiles/avatar.jpg' %}" data-src="{% static 'assets/img/profiles/avatar.jpg' %}" data-src-retina="{% static 'assets/img/profiles/avatar2x.jpg' %}" alt="">
+              <div class="card-block">
+                <h3> <span class="semi-bold">40만 팔로워 페북스타</span> </h3>
+                <p>안녕하세요. 후기광고 열심히 할 수 있습니다! 연락주세요~</p>
+                <br>
+                <div>
+                  <div class="profile-img-wrapper m-t-5 inline">
+                    <img width="35" height="35" src="{% static 'assets/img/profiles/avatar_small2x.jpg' %}">
+                    <div class="chat-status available">
+                    </div>
+                  </div>
+                  <div class="inline m-l-10">
+                    <p class="small hint-text m-t-5">김경이
+                      <br>youtube</p>
+                  </div>
                 </div>
-                <div class="inline m-l-10">
-                  <p class="no-margin text-white fs-12">Designed by Alex Nester</p>
-                  <p class="rating">
-                    <i class="fa fa-star rated"></i>
-                    <i class="fa fa-star rated"></i>
-                    <i class="fa fa-star rated"></i>
-                    <i class="fa fa-star rated"></i>
-                    <i class="fa fa-star"></i>
-                  </p>
-                </div>
-                <div class="pull-right m-t-10">
-                  <button class="btn btn-white btn-xs btn-mini bold fs-14" type="button">+</button>
-                </div>
-                <div class="clearfix"></div>
               </div>
             </div>
           </div>
         </div>
-        <!-- END PRODUCT OVERLAY DESCRIPTION -->
       </div>
-      {% endfor %}
+      <!-- END CREATOR -->
+
     </div>
-    <!-- END CATEGORY -->
+
+    <div class="m-l-10 m-t-10 m-r-10 row" onclick="location.href='/api/v1/ad/detail/';">
+      <div class="col-lg-12 sm-no-padding">
+        <div class="card card-transparent">
+          <div class="card-block no-padding">
+            <div id="card-advance" class="card card-default">
+              <div class="card-header  ">
+                <div class="card-title">Recommend You!
+                </div>
+                <div class="card-controls">
+                  <ul>
+                    <li>
+                      <div class="dropdown">
+                        <a id="card-settings" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
+                          <i class="card-icon card-icon-settings "></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="card-settings">
+                          <a href="#" class="dropdown-item">API</a>
+                          <a href="#" class="dropdown-item">Preferences</a>
+                          <a href="#" class="dropdown-item">About</a>
+                        </div>
+                      </div>
+                    </li>
+                    <li><a href="#" class="card-collapse" data-toggle="collapse"><i
+                                      class="card-icon card-icon-collapse"></i></a>
+                    </li>
+                    <li><a href="#" class="card-refresh" data-toggle="refresh"><i
+                                      class="card-icon card-icon-refresh"></i></a>
+                    </li>
+                    <li><a href="#" class="card-maximize" data-toggle="maximize"><i
+                                      class="card-icon card-icon-maximize"></i></a>
+                    </li>
+                    <li><a href="#" class="card-close" data-toggle="close"><i
+                                      class="card-icon card-icon-close"></i></a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="row card-block">
+                <div class="col-lg-3">
+                  <img width="100%" height="120px" src="{% static 'assets/img/julio.jpg' %}">
+                </div>
+                <div class=" col-lg-8">
+                  <h3> <span class="semi-bold">훌리오(JULIO) 2차</span> </h3>
+                  <p>
+                    <table class="m-t-20" width="90%" style="font-size:1.1em;">
+                      <tr>
+                        <td width="20%">예상수익률</td><td width="20%">기간</td><td width="20%">지역</td><td width="20%">예산</td><td>모집률</td>
+                      </tr>
+                      <tr>
+                        <td>9.50%</td><td>12개월</td><td>서울, 경기</td><td>100,000원</td>
+                        <td>
+                          <div style="display:flex;">
+                            <div class="progress m-t-10" style="flex:3;">
+                              <div class="progress-bar progress-bar-primary" style="width:35%;"></div>
+                            </div>
+                            <div class="m-l-10 m-t-5" style="flex:1; font-size:0.8em;">
+                              35%
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                    </table>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
   <!-- START DIALOG -->
   <div id="itemDetails" class="dialog item-details">
