@@ -15,7 +15,6 @@ urlpatterns = [
     url(r'^api/v1/resume/$', resume),
     url(r'^api/v1/resume/detail/(?P<id>\d+)/$', resume_detail, name='resume_detail'),
     url(r'^api/v1/ad/$', ad),
-    url(r'^api/v1/ad/detail/$', ad_detail), # 테스트 후 삭제
     url(r'^api/v1/ad/(?P<id>\d+)/$', ad_detail, name='ad_detail'),
     url(r'^api/v1/ad/result/$', ad_result, name='ad_result'),
     url(r'^api/v1/ad/count/$', ad_count),   
