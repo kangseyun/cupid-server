@@ -86,9 +86,10 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
-
+## 크리에이터 등록 ..
 class Resume(models.Model):
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(UserDetail)
+    categoty = models.ForeignKey(Category, blank=True, null=True)
     create_date = models.DateTimeField(auto_now_add=True)
 
     def save(self, *args, **kwargs):

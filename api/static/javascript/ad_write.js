@@ -13,4 +13,10 @@ $(function() {
             $('.location-form-input').remove();
         }
     });
+
+    $('.category').change(function() {
+        var data = $('.category').val();
+        location.href="/api/v1/resume/?category="+data;
+        console.log(data);
+    });
 });
