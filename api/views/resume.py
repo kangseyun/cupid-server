@@ -21,8 +21,8 @@ def resume(request):
         if id == 0:
             obj = Resume.objects.all()
         else:
-            c = Category.objects.filter(id=id)
-            obj = Resume.objects.all(category=c)
+            c = Category.objects.get(id=id)
+            obj = Resume.objects.filter(category=c)
         print(obj)
         return render(request, 'resume_list.html', {"category": category, "obj": obj})
 

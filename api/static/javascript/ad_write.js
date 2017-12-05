@@ -19,4 +19,10 @@ $(function() {
         location.href="/api/v1/resume/?category="+data;
         console.log(data);
     });
+
+    $('.category-ad').change(function() {
+        var data = $('.category-ad').val();
+        location.href="/api/v1/ad/?category="+data;
+        console.log(data);
+    });
 });

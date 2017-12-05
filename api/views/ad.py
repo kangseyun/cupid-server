@@ -48,11 +48,19 @@ def ad_detail(request, id=1):
         return render(request, 'ad_detail.html', {"view": obj, "num": id, "check": check})
 
 
-@csrf_exempt
 def ad(request):
     if request.method == "GET":
-        obj = Ads.objects.all()
-        return render(request, 'ad_list.html', {"ad": obj})
+        id = request.GET.get('category', 0)
+        category = Category.objects.all()
+        print(id)
+        if id == 0:
+            obj = Ads.objects.all()
+        else:
+            c = Category.objects.get(id=id)
+            print(c)
+            obj = Ads.objects.filter(category=c)
+            print(obj)
+        return render(request, 'ad_list.html', {"ad": obj, "category": category})
 
 
 @csrf_exempt
