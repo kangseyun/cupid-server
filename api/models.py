@@ -150,6 +150,14 @@ class AdTrade(models.Model):
         super(AdTrade, self).save(*args, **kwargs)
 
 
+class ADResult(models.Model):
+    id = models.AutoField(primary_key=True)
+    ad = models.ForeignKey(Ads)
+    like = models.IntegerField()
+    view = models.IntegerField()
+    reply = models.IntegerField()
+
+
 class AdRequest(models.Model):
     ad_id = models.ForeignKey(Ads)
     sender = models.ForeignKey(UserDetail)

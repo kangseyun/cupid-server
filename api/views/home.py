@@ -22,6 +22,11 @@ def trade(request):
         print(i)
     return render(request, './my/trade.html', {'ad': obj})
 
+def ad_result(request):
+    user = UserDetail.objects.get(user=request.user)
+    obj = AdTrade.objects.filter(status=1, adbos=user)
+    return render(request, './my/ad_result.html', {'ad': obj})
+
 def ad_status(request):
     user = UserDetail.objects.get(user=request.user)
     ad = Ads.objects.filter(author=user)

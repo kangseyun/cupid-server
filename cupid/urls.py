@@ -3,7 +3,7 @@ from django.contrib import admin
 from api.views.auth import login, join, logout
 from api.views.resume import resume, resume_detail, resume_regi, resume_regi_delete
 from api.views.ad import ad, ad_detail, ad_write, ad_count, ad_write, ad_result, trade_accept
-from api.views.home import index, my, notification, chat, ad_status, trade
+from api.views.home import index, my, notification, chat, ad_status, trade, ad_result as ad_result_list
 from api.views.ad import trade as trade_request
 
 
@@ -29,5 +29,7 @@ urlpatterns = [
     url(r'^trade/accept/$', trade_accept , name='trade_accept'),   
     url(r'^resume/regi/$', resume_regi , name='resume_regi'),   
     url(r'^resume/regi/delete/$', resume_regi_delete, name='resume_regi_delete'),   
-    url(r'^ad/result/$', trade_request , name='ad_result'),   
+    url(r'^ad/result/(?P<id>\d+)/$', ad_result , name='ad_result'),
+    url(r'^my/ad_result/$', ad_result_list , name='my_ad_result'),   
+   
 ]

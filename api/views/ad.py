@@ -10,7 +10,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from datetime import datetime
-from api.models import Ads, Category, Location, AdTrade
+from api.models import Ads, Category, Location, AdTrade, ADResult
 from django.shortcuts import redirect
 
 
@@ -125,5 +125,10 @@ def ad_write(request):
 
 @csrf_exempt
 def ad_result(request, id=0):
+    adtrade = AdTrade.objects.get(id=id)
+    try:
+        result = ADResult.objects.get(ad=adtrade.ad)
+    except:
+        return redirect('my')
     if request.method == 'GET':
         return render(request, 'ad_result.html')
