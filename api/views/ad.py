@@ -32,6 +32,19 @@ def trade(request):
     return redirect('my')
 
 
+def trade_accept(request):
+    ad = request.GET.get('ad')
+    #adobj = Ads.objects.get(id=0)
+    ad_obj = Ads.objects.get(id=ad)
+
+    try:
+        obj = AdTrade.objects.get(ad=ad_obj)
+        obj.status = 1
+        obj.save()
+    except:
+        print("fail")
+    return redirect('my')
+
 @csrf_exempt
 def ad_detail(request, id=1):
     if request.method == 'GET':
@@ -79,6 +92,7 @@ def ad_write(request):
         category = request.POST.get('category')
         title = request.POST.get('subject')
         budget = request.POST.get('budget')
+        content = request.POST.get('content')
         limit = request.POST.get('limit', 0)
         img = request.FILES['img']
         location_x = request.POST.get('x', 0)
@@ -96,10 +110,10 @@ def ad_write(request):
             user = UserDetail.objects.get(user=request.user)
 
             try:
-                obj = Ads(category=ad, title=title, author=user, budget=budget, limit=limit, img=img, location=location_obj)
+                obj = Ads(category=ad, title=title, author=user, budget=budget, content=content, limit=limit, img=img, location=location_obj)
                 obj.save()
             except:
-                obj = Ads(category=ad, title=title, author=user, budget=budget, limit=limit, img=img)
+                obj = Ads(category=ad, title=title, author=user, budget=budget, content=content, limit=limit, img=img)
                 obj.save()
             return redirect('my')
         else:

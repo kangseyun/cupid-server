@@ -1,6 +1,6 @@
 from django.contrib import admin
 from api.models import UserDetail, Ads, AdRequest, Reply, Category, Location
-from api.models import Notification, NotificationType, AdTrade, Recommend
+from api.models import Notification, NotificationType, AdTrade, Recommend, Resume
 
 
 admin.site.register(UserDetail)
@@ -13,5 +13,6 @@ admin.site.register(Notification)
 admin.site.register(NotificationType)
 admin.site.register(AdTrade)
 admin.site.register(Recommend)
+admin.site.register(Resume)
 
 

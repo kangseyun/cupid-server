@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 
 class UserDetail(models.Model):
     user = models.ForeignKey(User)
-    user_type = models.IntegerField(blank=False, default=0, verbose_name='유저 타입') # 사용자 타입 (0:관리자 / 1:광고주 / 2: 크리에이터)
+    status = models.IntegerField(blank=False, default=0, verbose_name='유저 타입') # 사용자 타입 (0:관리자 / 1:광고주 / 2: 크리에이터)
     token = models.CharField(max_length=100, blank=True, verbose_name='토큰')
     tel = models.CharField(max_length=15, verbose_name='번호', blank=True, null=True)
     last_login = models.DateTimeField(blank=True, null=True)
@@ -89,11 +89,19 @@ class Category(models.Model):
 ## 크리에이터 등록 ..
 class Resume(models.Model):
     user = models.ForeignKey(UserDetail)
-    categoty = models.ForeignKey(Category, blank=True, null=True)
+    category = models.ForeignKey(Category, blank=True, null=True)
     create_date = models.DateTimeField(auto_now_add=True)
+    #data = model.ForeignKey(ResumeData)
 
     def save(self, *args, **kwargs):
         super(Resume, self).save(*args, **kwargs)
+
+# class ResumeData(models.Model):
+#     title = models.CharField(max_length=100)
+#     platform = models.CharField(max_length=100)
+
+#     def save(self, *args, **kwargs):
+#         super(Resume, self).save(*args, **kwargs)
 
 
 class Ads(models.Model):    
@@ -106,6 +114,8 @@ class Ads(models.Model):
     create_at = models.DateTimeField(auto_now=False)
     img = models.ImageField(upload_to = 'image/', blank=True, null=True)
     location = models.ForeignKey(Location, blank=True, null=True)
+    content = models.TextField(blank=True, null=True)
+
 
     class Meta:
         verbose_name = '광고'

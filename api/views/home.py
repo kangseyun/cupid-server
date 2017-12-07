@@ -5,11 +5,12 @@ from api.models import Ads, Category, UserDetail, Notification, AdTrade
 
 
 def index(request):
-    ad = Ads.objects.all()
+    ad = UserDetail.objects.all()
     return render(request, './index.html', {'ad': ad})
 
 def my(request):
-    return render(request, './my/index.html', {})
+    user = UserDetail.objects.get(user=request.user)
+    return render(request, './my/index.html', {"user": user})
 
 def chat(request):
     return render(request, './my/chat.html', {})
