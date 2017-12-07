@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
-from api.models import Resume
+from api.models import Resume, UserDetail, AdTrade, Category
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.models import User
 
@@ -16,7 +16,15 @@ response_data = {
 def resume(request):
     # 크리에이터 열람
     if request.method == "GET":
-        return render(request, 'resume_list.html', {})
+        id = request.GET.get('caregory', 0)
+        category = Category.objects.all()
+        if id == 0:
+            obj = Resume.objects.all()
+        else:
+            c = Category.objects.get(id=id)
+            obj = Resume.objects.filter(category=c)
+        print(obj)
+        return render(request, 'resume_list.html', {"category": category, "obj": obj})
 
 
 @csrf_exempt
@@ -40,8 +48,15 @@ def resume_write(request):
 
     return JsonResponse(response_data, safe=False)
 
-def resume_detail(request):
-    return render(request, 'resume_result.html', {})
+def resume_detail(request, id):
+    check = 0
+    user = UserDetail.objects.get(user = request.user)
+    obj = AdTrade.objects.filter(creater = user)
+    if len(obj) != 0:
+        check = 1
+
+    print(len(obj))
+    return render(request, 'resume_result.html', {"call": check})
 
 # @csrf_exempt
 # def resume_detail(request, resume_id):

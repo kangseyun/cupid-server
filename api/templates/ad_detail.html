@@ -80,7 +80,12 @@
                     </p>
                   </div>
                   <div class="card-description" align="center">
-                    <button class="btn btn-success btn-cons">지원하기</button>
+                    {% if check == True %}
+                    <button class="btn btn-primary btn-cons">이미 지원하였습니다.</button>
+                    {% else %}
+                    <a href="{% url 'trade_request'%}?id={{view.id}}&ad={{num}}"><button class="btn btn-success btn-cons">지원하기</button></a>
+                    
+                    {% endif %}
                   </div>
                 </div>
                 <!-- END ITEM -->

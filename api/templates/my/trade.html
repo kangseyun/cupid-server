@@ -12,14 +12,16 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
+            {% for i in ad%}
+            <tr onclick="window.location.href = '{% url "resume_detail" i.creater.id %}';">
                 <td>
                     <input type="checkbox" />
                 </td>
-                <td>강세윤</td>
+                <td>{{ i.creater }}</td>
                 <td>안녕하세요 반갑습니다. 혹시 광고 집행하고 싶은데 연락가능 할까요?</td>
-                <td>1일전</td>
+                <td>{{ i.creater.id}}</td>
             </tr>
+            {% endfor %}
         </tbody>
     </table>
 {% endblock %}

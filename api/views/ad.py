@@ -10,35 +10,57 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from datetime import datetime
-from api.models import Ads, Category, Location
+from api.models import Ads, Category, Location, AdTrade
 from django.shortcuts import redirect
 
 
 response_data = {}
 
 
+def trade(request):
+    adbos = request.GET.get('id')
+    ad = request.GET.get('ad')
+    #adobj = Ads.objects.get(id=0)
+    ad_obj = Ads.objects.get(id=ad)
+    user = UserDetail.objects.get(id=adbos)
+    my = UserDetail.objects.get(id=request.user.id)
+    try:
+        t = AdTrade(creater = user, adbos = user, status=0, ad=ad_obj)
+        t.save()
+    except:
+        print("fail")
+    return redirect('my')
+
+
 @csrf_exempt
-def ad_detail(request, id=0):
+def ad_detail(request, id=1):
     if request.method == 'GET':
+        check = False
         try:
             obj = Ads.objects.get(id=id)
+            t = AdTrade.objects.filter(ad = obj)
+            for i in t:
+                if i.creater.id == request.user.id:
+                    check = True
+
         except Ads.DoesNotExist:
-            response_data['code'] = -1
-        return render(request, 'ad_detail.html', {"view": obj})
+            pass
+        return render(request, 'ad_detail.html', {"view": obj, "num": id, "check": check})
 
 
-# 테스트 위한 render 함수 -> 테스트 후 삭제할 것 !
-@csrf_exempt
-def ad_detail_render(request, id=0):
-    if request.method == 'GET':
-        return render(request, 'ad_detail.html')
-
-
-@csrf_exempt
 def ad(request):
     if request.method == "GET":
-        obj = Ads.objects.all()
-        return render(request, 'ad_list.html', {"ad": obj})
+        id = request.GET.get('category', 0)
+        category = Category.objects.all()
+        print(id)
+        if id == 0:
+            obj = Ads.objects.all()
+        else:
+            c = Category.objects.get(id=id)
+            print(c)
+            obj = Ads.objects.filter(category=c)
+            print(obj)
+        return render(request, 'ad_list.html', {"ad": obj, "category": category})
 
 
 @csrf_exempt
