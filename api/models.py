@@ -122,7 +122,6 @@ class Ads(models.Model):
     def __str__(self):
         return self.title
 
-
 class AdTrade(models.Model):
     id = models.AutoField(primary_key=True)
     creater = models.ForeignKey(UserDetail, verbose_name='크리에이터', related_name='create')
@@ -130,6 +129,7 @@ class AdTrade(models.Model):
     status = models.IntegerField(default = 0) # 0 요청, 1 요청수락, 2 진행중, 3 완료
     ad = models.ForeignKey(Ads)
     create_at = models.DateTimeField(auto_now=False, blank=True, null=True)
+    score  = models.IntegerField(blank=True, null=True)
 
     def save(self, *args, **kwargs):
         if self.id:
@@ -185,6 +185,11 @@ class TontataChat(models.Model):
     class Meta:
         verbose_name = '채팅'
         verbose_name_plural = '채팅'
+
+class Recommend(models.Model):
+    id = models.AutoField(primary_key=True)
+    adbos = models.ForeignKey(Category, related_name='adbos')
+    recommend  = models.CharField(max_length=100, blank=True, null=True)
 
 
     
