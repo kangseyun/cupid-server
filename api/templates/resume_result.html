@@ -65,7 +65,7 @@
                         </div>
                         {% if call == 1 %}
                         <div class="card-header clearfix">
-                            <button class="btn btn-primary">수락하기</button>                            
+                            <a href="{% url 'trade_accept' %}?ad={{obj.id}}"><button class="btn btn-primary">수락하기</button></a>                         
                         </div>
                         {% elif call == 2 %}
                         <div class="card-header clearfix">

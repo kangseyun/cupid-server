@@ -10,7 +10,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from datetime import datetime
-from api.models import Ads, Category, Location, AdTrade
+from api.models import Ads, Category, Location, AdTrade, ADResult
 from django.shortcuts import redirect
 
 
@@ -21,6 +21,7 @@ def trade(request):
     adbos = request.GET.get('id')
     ad = request.GET.get('ad')
     #adobj = Ads.objects.get(id=0)
+    print(ad)
     ad_obj = Ads.objects.get(id=ad)
     user = UserDetail.objects.get(id=adbos)
     my = UserDetail.objects.get(id=request.user.id)
@@ -31,6 +32,19 @@ def trade(request):
         print("fail")
     return redirect('my')
 
+
+def trade_accept(request):
+    ad = request.GET.get('ad')
+    #adobj = Ads.objects.get(id=0)
+    ad_obj = Ads.objects.get(id=ad)
+
+    try:
+        obj = AdTrade.objects.get(ad=ad_obj)
+        obj.status = 1
+        obj.save()
+    except:
+        print("fail")
+    return redirect('my')
 
 @csrf_exempt
 def ad_detail(request, id=1):
@@ -63,7 +77,6 @@ def ad(request):
         return render(request, 'ad_list.html', {"ad": obj, "category": category})
 
 
-@csrf_exempt
 def ad_count(request):
     if request.method == "GET":
         count = Ads.objects.count()
@@ -79,6 +92,7 @@ def ad_write(request):
         category = request.POST.get('category')
         title = request.POST.get('subject')
         budget = request.POST.get('budget')
+        content = request.POST.get('content')
         limit = request.POST.get('limit', 0)
         img = request.FILES['img']
         location_x = request.POST.get('x', 0)
@@ -96,10 +110,10 @@ def ad_write(request):
             user = UserDetail.objects.get(user=request.user)
 
             try:
-                obj = Ads(category=ad, title=title, author=user, budget=budget, limit=limit, img=img, location=location_obj)
+                obj = Ads(category=ad, title=title, author=user, budget=budget, content=content, limit=limit, img=img, location=location_obj)
                 obj.save()
             except:
-                obj = Ads(category=ad, title=title, author=user, budget=budget, limit=limit, img=img)
+                obj = Ads(category=ad, title=title, author=user, budget=budget, content=content, limit=limit, img=img)
                 obj.save()
             return redirect('my')
         else:
@@ -111,5 +125,10 @@ def ad_write(request):
 
 @csrf_exempt
 def ad_result(request, id=0):
+    adtrade = AdTrade.objects.get(id=id)
+    try:
+        result = ADResult.objects.get(ad=adtrade.ad)
+    except:
+        return redirect('my')
     if request.method == 'GET':
         return render(request, 'ad_result.html')
