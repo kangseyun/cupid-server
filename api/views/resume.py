@@ -88,11 +88,7 @@ def resume_detail(request, id):
     obj = AdTrade.objects.filter(creater = user)
     ad = Ads.objects.get(id=id)
 
-    if len(obj) != 0:
-        check = 1
-
-    print(len(obj))
-    return render(request, 'resume_result.html', {"call": check,"obj": ad})
+    return render(request, 'resume_result.html', {"call": obj[0],"obj": ad})
 
 # @csrf_exempt
 # def resume_detail(request, resume_id):
