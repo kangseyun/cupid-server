@@ -21,6 +21,7 @@ def trade(request):
     adbos = request.GET.get('id')
     ad = request.GET.get('ad')
     #adobj = Ads.objects.get(id=0)
+    print(ad)
     ad_obj = Ads.objects.get(id=ad)
     user = UserDetail.objects.get(id=adbos)
     my = UserDetail.objects.get(id=request.user.id)
