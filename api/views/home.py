@@ -4,10 +4,9 @@ from django.shortcuts import redirect
 from api.models import Ads, Category, UserDetail, Notification, AdTrade
 
 
-# def index(request):
-#     ad = UserDetail.objects.all()
-#     return render(request, './index.html', {'ad': ad})
-
+def index(request):
+    ad = UserDetail.objects.all()
+    return render(request, './index.html', {'ad': ad})
 
 def my(request):
     user = UserDetail.objects.get(user=request.user)
