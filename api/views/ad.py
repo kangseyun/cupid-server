@@ -23,11 +23,14 @@ def trade(request):
     #adobj = Ads.objects.get(id=0)
     print(ad)
     ad_obj = Ads.objects.get(id=ad)
-    user = UserDetail.objects.get(id=adbos)
-    my = UserDetail.objects.get(id=request.user.id)
+    ad_boss = Ads.objects.get(id=adbos)    
+    user = UserDetail.objects.get(user=ad_boss.author.user)
+    my = UserDetail.objects.get(user=request.user)
+
     try:
         t = AdTrade(creater = user, adbos = user, status=0, ad=ad_obj)
         t.save()
+        print("complete")
     except:
         print("fail")
     return redirect('my')
