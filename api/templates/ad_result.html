@@ -125,6 +125,45 @@
                         <td>12,764</td>
                       </tr>
                     </table>
+                    <div class="card-block">
+                      <div class="card card-borderless card-transparent">
+                        <!-- Nav tabs -->
+                        <ul id="tabs-rickshaw" class="nav nav-tabs nav-tabs-linetriangle" data-init-reponsive-tabs="dropdownfx">
+                          <li class="nav-item">
+                            <a href="#" class="active" data-toggle="tab" data-target="#tab-rickshaw-realtime" role="tab">
+                              <span>Realtime Charts</span>
+                            </a>
+                          </li>
+                          <li class="nav-item">
+                            <a href="#" data-toggle="tab" data-target="#tab-rickshaw-bars" role="tab">
+                              <span>Stacked Bar Charts</span>
+                            </a>
+                          </li>
+                          <li class="nav-item">
+                            <a href="#" data-toggle="tab" data-target="#tab-rickshaw-slider" role="tab">
+                              <span>Area Chart with Slider</span>
+                            </a>
+                          </li>
+                        </ul>
+                        <!-- Tab panes -->
+                        <div class="tab-content no-padding bg-transparent">
+                          <div class="tab-pane active relative" id="tab-rickshaw-realtime">
+                            <div id="rickshaw-realtime_y_axis" class=""></div>
+                            <div id="rickshaw-realtime" class="rickshaw-chart"></div>
+                          </div>
+                          <div class="tab-pane " id="tab-rickshaw-bars">
+                            <div id="rickshaw-stacked-bars" class="rickshaw-chart"></div>
+                          </div>
+                          <div class="tab-pane" id="tab-rickshaw-slider">
+                            <div id="rickshaw-slider" class="relative">
+                              <div class="slider full-width m-t-20"></div>
+                              <div class="y_axis"></div>
+                              <div class="chart full-width rickshaw-chart"></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <!-- END ITEM -->
