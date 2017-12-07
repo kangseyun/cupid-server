@@ -45,6 +45,144 @@
 
     <div class="m-l-10 m-t-10 m-r-10 row">
 
+      <div class="col-lg-4 sm-no-padding">
+        <div class="card card-transparent">
+          <div class="card-block no-padding">
+            <div id="card-advance" class="card card-default">
+              <div class="card-header  ">
+                <div class="card-controls">
+                  <ul>
+                    <li>
+                      <div class="dropdown">
+                        <a id="card-settings" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
+                          <i class="card-icon card-icon-settings "></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="card-settings">
+                          <a href="#" class="dropdown-item">API</a>
+                          <a href="#" class="dropdown-item">Preferences</a>
+                          <a href="#" class="dropdown-item">About</a>
+                        </div>
+                      </div>
+                    </li>
+                    <li><a href="#" class="card-close" data-toggle="close"><i
+	    								class="card-icon card-icon-close"></i></a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="card-block">
+                <h3> <span class="semi-bold"><a href="{% url 'resume_detail' 1 %}">40만 팔로워 페북스타</a></span> </h3>
+                <p>안녕하세요. 후기광고 열심히 할 수 있습니다! 연락주세요~</p>
+                <br>
+                <div>
+                  <div class="profile-img-wrapper m-t-5 inline">
+                    <img width="35" height="35" src="{% static 'assets/img/profiles/1x.jpg' %}">
+                    <div class="chat-status available">
+                    </div>
+                  </div>
+                  <div class="inline m-l-10">
+                    <p class="small hint-text m-t-5">김경이
+                      <br>Facebook</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 sm-no-padding">
+        <div class="card card-transparent">
+          <div class="card-block no-padding">
+            <div id="card-advance" class="card card-default">
+              <div class="card-header  ">
+                <div class="card-controls">
+                  <ul>
+                    <li>
+                      <div class="dropdown">
+                        <a id="card-settings" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
+                          <i class="card-icon card-icon-settings "></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="card-settings">
+                          <a href="#" class="dropdown-item">API</a>
+                          <a href="#" class="dropdown-item">Preferences</a>
+                          <a href="#" class="dropdown-item">About</a>
+                        </div>
+                      </div>
+                    </li>
+                    <li><a href="#" class="card-close" data-toggle="close"><i
+	    								class="card-icon card-icon-close"></i></a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="card-block">
+                <h3> <span class="semi-bold"><a href="{% url 'resume_detail' 1 %}">게임 채널 유투버</a></span> </h3>
+                <p>FPS게임(배그 / 오버워치) 영상 채널 운영하고 있습니다. 5천명의 구독자 보유중입니다.</p>
+                <br>
+                <div>
+                  <div class="profile-img-wrapper m-t-5 inline">
+                    <img width="35" height="35" src="{% static 'assets/img/profiles/avatar_small2x.jpg' %}">
+                    <div class="chat-status available">
+                    </div>
+                  </div>
+                  <div class="inline m-l-10">
+                    <p class="small hint-text m-t-5">강세윤
+                      <br>Youtube</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 sm-no-padding">
+        <div class="card card-transparent">
+          <div class="card-block no-padding">
+            <div id="card-advance" class="card card-default">
+              <div class="card-header  ">
+                <div class="card-controls">
+                  <ul>
+                    <li>
+                      <div class="dropdown">
+                        <a id="card-settings" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
+                          <i class="card-icon card-icon-settings "></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="card-settings">
+                          <a href="#" class="dropdown-item">API</a>
+                          <a href="#" class="dropdown-item">Preferences</a>
+                          <a href="#" class="dropdown-item">About</a>
+                        </div>
+                      </div>
+                    </li>
+                    <li><a href="#" class="card-close" data-toggle="close"><i
+	    								class="card-icon card-icon-close"></i></a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="card-block">
+                <h3> <span class="semi-bold"><a href="{% url 'resume_detail' 1 %}">여행 블로그 운영</a></span> </h3>
+                <p>안녕하세요. 네이버에서 여행관련 파워블로거 5년차입니다. 맛집/체험 후기 할 수 있습니다 ^^</p>
+                <br>
+                <div>
+                  <div class="profile-img-wrapper m-t-5 inline">
+                    <img width="35" height="35" src="{% static 'assets/img/profiles/9x.jpg' %}">
+                    <div class="chat-status available">
+                    </div>
+                  </div>
+                  <div class="inline m-l-10">
+                    <p class="small hint-text m-t-5">김지민
+                      <br>Blogger</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {% for i in obj %}
       <!-- START CREATOR LIST -->
       <div class="col-lg-4 sm-no-padding">
