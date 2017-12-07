@@ -76,7 +76,6 @@ def ad(request):
         return render(request, 'ad_list.html', {"ad": obj, "category": category})
 
 
-@csrf_exempt
 def ad_count(request):
     if request.method == "GET":
         count = Ads.objects.count()
