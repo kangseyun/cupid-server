@@ -57,7 +57,7 @@ def join(request):
             userInstance = User.objects.create_user(name, email, password)
             userInstance.save()
 
-            obj = UserDetail(user = userInstance, user_type=1)
+            obj = UserDetail(user = userInstance, status=1)
             obj.save()
 
 

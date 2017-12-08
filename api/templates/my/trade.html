@@ -13,7 +13,7 @@
         </thead>
         <tbody>
             {% for i in ad%}
-            <tr onclick="window.location.href = '{% url "resume_detail" i.creater.id %}';">
+            <tr onclick="window.location.href = '{% url "resume_detail" i.id %}';">
                 <td>
                     <input type="checkbox" />
                 </td>

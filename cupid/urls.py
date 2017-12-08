@@ -17,7 +17,7 @@ urlpatterns = [
     url(r'^api/v1/resume/detail/(?P<id>\d+)/$', resume_detail, name='resume_detail'),
     url(r'^api/v1/ad/$', ad),
     url(r'^api/v1/ad/(?P<id>\d+)/$', ad_detail, name='ad_detail'),
-    url(r'^api/v1/ad/result/$', ad_result, name='ad_result'),
+    #url(r'^api/v1/ad/result/$', ad_result, name='ad_result'),
     url(r'^api/v1/ad/count/$', ad_count),   
     url(r'^my/$', my, name='my'),  
     url(r'^my/chat/$', chat, name='chat'),   

@@ -128,10 +128,5 @@ def ad_write(request):
 
 @csrf_exempt
 def ad_result(request, id=0):
-    adtrade = AdTrade.objects.get(id=id)
-    try:
-        result = ADResult.objects.get(ad=adtrade.ad)
-    except:
-        return redirect('my')
     if request.method == 'GET':
         return render(request, 'ad_result.html')
